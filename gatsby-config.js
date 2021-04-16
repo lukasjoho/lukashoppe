@@ -7,6 +7,14 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-image`,
+    `gatsby-plugin-styled-components`,
+    `gatsby-plugin-root-import`,
+    {
+      resolve: `gatsby-plugin-layout`,
+      options: {
+        component: require.resolve(`./src/layouts/Layout.js`),
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {

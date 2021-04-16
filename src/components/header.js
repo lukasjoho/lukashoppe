@@ -1,42 +1,45 @@
-import * as React from "react"
-import PropTypes from "prop-types"
-import { Link } from "gatsby"
+import React from "react"
+import styled from "styled-components"
+const StyledHeader = styled.header`
+  height: ${props => `${props.theme.spacing.layout.desktop}rem`};
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 999;
+`
+const Hamburger = styled.div`
+  width: 2.2rem;
+  height: 1.4rem;
+  position: absolute;
+  right: ${props => `${props.theme.spacing.padding.desktop}rem`};
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  div {
+    height: 0.2rem;
+    width: 100%;
+    background: ${props => props.theme.colors.middlegrey};
+    position: relative;
+    &:first-child {
+      left: 50%;
+      transform: rotate(45deg) translateX(-50%);
+      transform-origin: -50% 0%;
+    }
+  }
+`
 
-const Header = ({ siteTitle }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
-    </div>
-  </header>
+const Header = ({ handleToggle }) => (
+  <StyledHeader>
+    <p>Logo</p>
+    <Hamburger onClick={handleToggle}>
+      <div />
+
+      <div />
+    </Hamburger>
+  </StyledHeader>
 )
-
-Header.propTypes = {
-  siteTitle: PropTypes.string,
-}
-
-Header.defaultProps = {
-  siteTitle: ``,
-}
 
 export default Header

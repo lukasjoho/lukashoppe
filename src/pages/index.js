@@ -1,29 +1,26 @@
+//dependencies
 import * as React from "react"
-import { Link } from "gatsby"
-import { StaticImage } from "gatsby-plugin-image"
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+//general components
+
+import Container from "../components/00-shared/Container"
+import Row from "../components/00-shared/Row"
+//page specific components
+import FullPage from "../components/00-shared/FullPage"
+import Image from "../components/01-home/Image"
+import Textblock from "../components/00-shared/Textblock"
 
 const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <StaticImage
-      src="../images/gatsby-astronaut.png"
-      width={300}
-      quality={95}
-      formats={["AUTO", "WEBP", "AVIF"]}
-      alt="A Gatsby astronaut"
-      style={{ marginBottom: `1.45rem` }}
-    />
-    <p>
-      <Link to="/page-2/">Go to page 2</Link> <br />
-      <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
-    </p>
-  </Layout>
+  <>
+    <FullPage>
+      <Container small auto>
+        <Row>
+          <Image />
+          <Textblock />
+        </Row>
+      </Container>
+    </FullPage>
+  </>
 )
 
 export default IndexPage
