@@ -7,6 +7,9 @@ const StyledFullPage = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  min-height: 33rem;
+  background: yellow;
+  position: relative;
 `
 const FullPage = ({ children }) => {
   return <StyledFullPage>{children}</StyledFullPage>
