@@ -14,6 +14,7 @@ module.exports = {
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-root-import`,
     `gatsby-transformer-remark`,
+    `gatsby-plugin-sass`,
     {
       resolve: `gatsby-source-contentful`,
       options: {

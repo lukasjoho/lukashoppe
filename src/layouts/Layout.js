@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import GlobalStyle from "../GlobalStyle"
 import Theme from "../Theme"
 import Footer from "../components/Footer"
@@ -17,13 +17,24 @@ const Layout = ({ children }) => {
   const handleToggle = () => {
     setIsOpen(!isOpen)
   }
+  useEffect(() => {
+    // Update the document title using the browser API
+    if (isOpen) {
+      document.body.style.overflow = "hidden"
+    } else {
+      document.body.style.overflow = "visible"
+    }
+  }, [isOpen])
   return (
     <Theme>
       <GlobalStyle />
       <StyledLayout>
-        <Header handleToggle={handleToggle} />
-        {children}
-        <Footer />
+        <Header handleToggle={handleToggle} isOpen={isOpen} />
+        {/* {children} */}
+        {React.cloneElement(children, {
+          handleToggle: handleToggle,
+        })}
+        <Footer isOpen={isOpen} />
       </StyledLayout>
       <AnimatePresence exitBeforeEnter>
         {isOpen && <Menu isOpen={isOpen} handleToggle={handleToggle} />}

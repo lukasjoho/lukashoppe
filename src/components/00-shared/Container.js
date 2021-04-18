@@ -1,13 +1,20 @@
 import React from "react"
 import styled from "styled-components"
+import Breakpoint from "src/components/00-shared/_breakpoints.js"
+
 const StyledContainer = styled.div`
+  width: 100%;
   max-width: ${props => (props.small ? "960px" : "1200px")};
   margin: auto;
-  padding: 0 4rem;
+  padding: 0 ${props => `${props.theme.spacing.padding.mobile}rem`};
   display: flex;
-  width: 100%;
   flex-wrap: wrap;
-  width: ${props => props.auto && "auto"};
+
+  box-sizing: border-box;
+  @media ${Breakpoint.lg} {
+    padding: 0 ${props => `${props.theme.spacing.padding.desktop}rem`};
+    width: ${props => props.auto && "auto"};
+  }
 `
 
 const Container = ({ small, children, auto }) => {

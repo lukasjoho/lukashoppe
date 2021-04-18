@@ -5,16 +5,19 @@ import Icon2 from "../images/icons/icon-linkedin.svg"
 import Icon3 from "../images/icons/icon-dribbble.svg"
 import Icon4 from "../images/icons/icon-youtube.svg"
 import Icon5 from "../images/icons/icon-github.svg"
+import Breakpoint from "src/components/00-shared/_breakpoints.js"
 
 const StyledFooter = styled.footer`
-  height: ${props => `${props.theme.spacing.layout.desktop}rem`};
+  height: ${props => `${props.theme.spacing.layout.mobile}rem`};
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: 1.4rem;
-
+  @media ${Breakpoint.lg} {
+    height: ${props => `${props.theme.spacing.layout.desktop}rem`};
+  }
   p {
     line-height: 1;
     font-size: 1.4rem;
@@ -66,7 +69,6 @@ const Footer = () => (
         <img src={Icon5} />
       </li>
     </Ul>
-    <p>My channels</p>
   </StyledFooter>
 )
 

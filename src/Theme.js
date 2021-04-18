@@ -5,6 +5,7 @@ const theme = {
   colors: {
     dark: "#1a1a1a",
     middlegrey: "#888888",
+    lightgrey: "#88888825",
     bright: "#f1f1f1",
   },
   spacing: {
@@ -15,6 +16,10 @@ const theme = {
     padding: {
       desktop: 4,
       mobile: 3,
+    },
+    spacer: {
+      desktop: 20,
+      mobile: 10,
     },
   },
 }

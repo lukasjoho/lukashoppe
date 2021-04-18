@@ -1,19 +1,44 @@
 import React from "react"
 import ImageProfile from "../../images/image-lukas.jpg"
 import styled from "styled-components"
+import Breakpoint from "src/components/00-shared/_breakpoints.js"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { graphql, useStaticQuery } from "gatsby"
 const StyledImage = styled.div`
-  height: 33rem;
-  width: 33rem;
-  margin-right: 6rem;
+  width: 100%;
+  margin-right: 0rem;
   flex-shrink: 0;
+  font-size: 0;
+  margin-bottom: 3rem;
+  @media ${Breakpoint.lg} {
+    height: 33rem;
+    width: 33rem;
+    margin-right: 6rem;
+    margin-bottom: 0rem;
+  }
   img {
     width: 100%;
   }
 `
-const Image = () => {
+
+const Image = props => {
+  const { image } = useStaticQuery(graphql`
+    query {
+      image: file(relativePath: { eq: "image-lukas.jpg" }) {
+        childImageSharp {
+          gatsbyImageData(
+            width: 1000
+            placeholder: BLURRED
+            formats: [AUTO, WEBP]
+          )
+        }
+      }
+    }
+  `)
+
   return (
     <StyledImage>
-      <img src={ImageProfile} alt="" />
+      <GatsbyImage image={getImage(image.childImageSharp.gatsbyImageData)} />
     </StyledImage>
   )
 }

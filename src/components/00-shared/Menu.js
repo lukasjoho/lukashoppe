@@ -1,10 +1,11 @@
 //dependencies
-import React from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
 
 import { motion, AnimatePresence } from "framer-motion"
 import { Link } from "gatsby"
 import Footer from "../Footer"
+import Breakpoint from "src/components/00-shared/_breakpoints.js"
 const StyledMenu = styled(motion.div)`
   width: 100vw;
   height: 100vh;
@@ -23,7 +24,7 @@ const StyledMenu = styled(motion.div)`
   }
 `
 const Nav = styled.nav`
-  ul {
+  .mainlist {
     padding: 0;
     list-style-type: none;
     a {
@@ -32,9 +33,28 @@ const Nav = styled.nav`
     li {
       text-align: center;
       color: ${props => props.theme.colors.bright};
-      font-size: 6rem;
+      font-size: 4rem;
       font-weight: 700;
-      line-height: 12rem;
+      line-height: 8rem;
+      @media ${Breakpoint.lg} {
+        font-size: 6rem;
+        font-weight: 700;
+        line-height: 12rem;
+      }
+      cursor: pointer;
+      .sublist {
+        padding: 0;
+        list-style-type: none;
+        li {
+          font-size: 2rem;
+          line-height: 4rem;
+          cursor: pointer;
+          @media ${Breakpoint.lg} {
+            font-size: 2.5rem;
+            line-height: 6rem;
+          }
+        }
+      }
     }
   }
 `
@@ -54,23 +74,84 @@ const container = {
     },
   },
 }
-const NavItem = ({ link, text, delay, handleToggle }) => {
+const NavItem = ({
+  link,
+  text,
+  delay,
+  handleToggle,
+  dropdown,
+  itemkey,
+  handleExpanded,
+  expanded,
+  index,
+}) => {
   return (
-    <Link to={link}>
-      <motion.li
-        onClick={handleToggle}
-        variants={item}
-        initial="before"
-        animate="show"
-        exit="after"
-        transition={{ delay: delay }}
-      >
-        {text}
-      </motion.li>
-    </Link>
+    <>
+      {dropdown ? (
+        <>
+          <motion.li
+            onClick={e => handleExpanded(e)}
+            variants={item}
+            initial="before"
+            animate="show"
+            exit="after"
+            transition={{ delay: delay }}
+            id={itemkey}
+          >
+            {text}
+            <AnimatePresence>
+              {expanded && index == itemkey && (
+                <motion.ul
+                  className="sublist"
+                  style={{ overflow: "hidden" }}
+                  initial={{ height: 0 }}
+                  animate={{ height: "auto" }}
+                  exit={{ height: 0 }}
+                >
+                  {dropdown.map(item => (
+                    <Link to={`${item[1]}`}>
+                      <li onClick={handleToggle}>{item[0]}</li>
+                    </Link>
+                  ))}
+                </motion.ul>
+              )}
+            </AnimatePresence>
+          </motion.li>
+        </>
+      ) : (
+        <Link to={link}>
+          <motion.li
+            onClick={handleToggle}
+            variants={item}
+            initial="before"
+            animate="show"
+            exit="after"
+            transition={{ delay: delay }}
+          >
+            {text}
+          </motion.li>
+        </Link>
+      )}
+    </>
   )
 }
 const Menu = ({ isOpen, handleToggle }) => {
+  const [index, setIndex] = useState(0)
+  const [expanded, setExpanded] = useState(false)
+
+  const handleExpanded = e => {
+    if (expanded && index == e.target.id) {
+      setExpanded(false)
+    } else if (expanded) {
+      setExpanded(true)
+    } else {
+      setExpanded(!expanded)
+    }
+
+    console.log("Index: ", index)
+    console.log("Target: ", e.target.id)
+    setIndex(e.target.id)
+  }
   return (
     <StyledMenu
       initial={{ opacity: 0 }}
@@ -78,11 +159,11 @@ const Menu = ({ isOpen, handleToggle }) => {
       exit={{ opacity: 0 }}
     >
       <Nav>
-        <motion.ul>
+        <motion.ul className="mainlist">
           <NavItem link="/" text="home" delay={0} handleToggle={handleToggle} />
           <NavItem
-            link="/photos"
-            text="photos"
+            link="/about"
+            text="about"
             delay={0.05}
             handleToggle={handleToggle}
           />
@@ -93,16 +174,29 @@ const Menu = ({ isOpen, handleToggle }) => {
             handleToggle={handleToggle}
           />
           <NavItem
-            link="/"
-            text="home"
+            link="/media"
+            text="media"
             delay={0.15}
             handleToggle={handleToggle}
+            handleExpanded={handleExpanded}
+            expanded={expanded}
+            dropdown={[
+              ["photos", "/photos"],
+              ["films", "/films"],
+            ]}
+            itemkey="media"
+            index={index}
           />
           <NavItem
             link="/"
-            text="home"
+            text="blog"
             delay={0.2}
             handleToggle={handleToggle}
+            handleExpanded={handleExpanded}
+            expanded={expanded}
+            dropdown={[["techlabs", "/blog/techlabs"]]}
+            itemkey="blog"
+            index={index}
           />
         </motion.ul>
       </Nav>

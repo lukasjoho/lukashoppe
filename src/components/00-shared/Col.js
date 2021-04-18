@@ -1,15 +1,36 @@
 import React from "react"
 import styled from "styled-components"
+import Breakpoint from "src/components/00-shared/_breakpoints.js"
+
 const StyledCol = styled.div`
-  padding: 0 ${props => `${props.theme.spacing.padding.desktop}rem`};
-  width: 50%;
-  background: yellow;
+  padding: 0 ${props => `${props.theme.spacing.padding.mobile}rem`};
   display: flex;
-  align-items: ${props => props.center && "center"};
+  flex-direction: column;
+  justify-content: ${props => (props.center ? "center" : "flex-start")};
+  box-sizing: border-box;
+  width: 100%;
+
+  @media ${Breakpoint.lg} {
+    padding: 0 ${props => `${props.theme.spacing.padding.desktop}rem`};
+    width: 50%;
+    &.small {
+      width: 40%;
+    }
+    &.large {
+      width: 60%;
+    }
+  }
 `
 
-const Col = ({ children, center }) => {
-  return <StyledCol center={center}>{children}</StyledCol>
+const Col = ({ children, center, small, large }) => {
+  return (
+    <StyledCol
+      center={center}
+      className={(small && "small") || (large && "large")}
+    >
+      {children}
+    </StyledCol>
+  )
 }
 
 export default Col
