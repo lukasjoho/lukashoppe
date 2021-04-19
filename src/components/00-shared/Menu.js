@@ -4,7 +4,7 @@ import styled from "styled-components"
 
 import { motion, AnimatePresence } from "framer-motion"
 import { Link } from "gatsby"
-import Footer from "../Footer"
+import Footer from "src/layouts/Footer"
 import Breakpoint from "src/components/00-shared/_breakpoints.js"
 const StyledMenu = styled(motion.div)`
   width: 100vw;
