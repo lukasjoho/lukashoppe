@@ -25,8 +25,8 @@ html{
     }
   }
     h2{
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
+      font-size: 2.4rem;
+      margin-bottom: 1rem;
       @media ${Breakpoint.lg} {
        font-size: 3rem;
       margin-bottom: 1rem;
@@ -45,7 +45,7 @@ html{
       color: ${props => props.theme.colors.middlegrey};
       font-weight: 300;
       margin: 0;
-      margin-bottom: 1.5rem;
+      margin-bottom: 2rem;
       @media ${Breakpoint.lg} {
         line-height: 1.8;
       font-size: 1.8rem;

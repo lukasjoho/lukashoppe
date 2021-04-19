@@ -5,6 +5,7 @@ import Row from "./Row"
 import Textblock from "./Textblock"
 import Breakpoint from "src/components/00-shared/_breakpoints.js"
 import Button from "src/components/00-shared/Button"
+import { GatsbyImage } from "gatsby-plugin-image"
 const StyledContentRow = styled.div`
   display: flex;
   margin-bottom: ${props => `${props.theme.spacing.spacer.mobile}rem`};
@@ -34,7 +35,7 @@ const ContentRow = ({
           <Button text={button} href={href} />
         </Col>
         <Col center={center}>
-          <img src={image} alt="" width="100%" />
+          <GatsbyImage image={image} />
         </Col>
       </Row>
     </StyledContentRow>

@@ -26,7 +26,7 @@ const StyledTextblock = styled.div`
   }
   h1 {
     font-size: 2.5rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
     @media ${Breakpoint.lg} {
       font-size: 3rem;
       margin-bottom: 1rem;
