@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react"
 import GlobalStyle from "../GlobalStyle"
 import Theme from "../Theme"
-import Footer from "../components/Footer"
-import Header from "../components/Header"
+import Footer from "src/components/Footer"
+import Header from "src/components/Header"
 import styled from "styled-components"
-import Menu from "../components/00-shared/Menu"
+import Menu from "src/components/00-shared/Menu"
 import { motion, AnimatePresence } from "framer-motion"
 import Breakpoint from "src/components/00-shared/_breakpoints.js"
 
