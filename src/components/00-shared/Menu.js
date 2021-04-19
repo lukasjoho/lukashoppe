@@ -18,6 +18,10 @@ const StyledMenu = styled(motion.div)`
   align-items: center;
   z-index: 998;
   flex-direction: column;
+  font-family: "Oswald";
+  font-weight: 700;
+  letter-spacing: 0.05rem;
+
   Footer {
     position: absolute;
     bottom: 0;
@@ -32,10 +36,13 @@ const Nav = styled.nav`
     }
     li {
       text-align: center;
-      color: ${props => props.theme.colors.bright};
+      color: ${props => props.theme.colors.middlegrey};
       font-size: 4rem;
       font-weight: 700;
       line-height: 8rem;
+      &:hover {
+        color: ${props => props.theme.colors.bright};
+      }
       @media ${Breakpoint.lg} {
         font-size: 6rem;
         font-weight: 700;
@@ -47,7 +54,7 @@ const Nav = styled.nav`
         list-style-type: none;
         li {
           font-size: 2rem;
-          line-height: 4rem;
+          line-height: 5rem;
           cursor: pointer;
           @media ${Breakpoint.lg} {
             font-size: 2.5rem;
