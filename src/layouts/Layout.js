@@ -6,16 +6,29 @@ import Header from "../components/Header"
 import styled from "styled-components"
 import Menu from "../components/00-shared/Menu"
 import { motion, AnimatePresence } from "framer-motion"
+import Breakpoint from "src/components/00-shared/_breakpoints.js"
 
 const StyledLayout = styled.div`
   display: flex;
   flex-direction: column;
+  padding-top: ${props => `${props.theme.spacing.layout.mobile}rem`};
+  @media ${Breakpoint.lg} {
+    padding-top: ${props => `${props.theme.spacing.layout.desktop}rem`};
+  }
 `
 
 const Layout = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false)
+  const [isPaused, setIsPaused] = useState(false)
   const handleToggle = () => {
     setIsOpen(!isOpen)
+    if (isPaused) {
+      setIsPaused(false)
+    } else {
+      setTimeout(() => {
+        setIsPaused(true)
+      }, 600)
+    }
   }
   useEffect(() => {
     // Update the document title using the browser API
@@ -29,7 +42,11 @@ const Layout = ({ children }) => {
     <Theme>
       <GlobalStyle />
       <StyledLayout>
-        <Header handleToggle={handleToggle} isOpen={isOpen} />
+        <Header
+          handleToggle={handleToggle}
+          isOpen={isOpen}
+          isPaused={isPaused}
+        />
         {/* {children} */}
         {React.cloneElement(children, {
           handleToggle: handleToggle,

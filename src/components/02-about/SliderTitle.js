@@ -4,8 +4,9 @@ import Breakpoint from "src/components/00-shared/_breakpoints.js"
 
 const StyledSliderTitle = styled.h2`
   text-align: center;
-  padding-bottom: 4rem;
+  padding-bottom: 3rem;
   @media ${Breakpoint.lg} {
+    padding-bottom: 4rem;
   }
 `
 

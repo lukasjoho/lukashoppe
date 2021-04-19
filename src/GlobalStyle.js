@@ -1,5 +1,6 @@
 import { createGlobalStyle } from "styled-components"
-import "@fontsource/poppins/latin-ext.css"
+import "@fontsource/poppins/500.css"
+import "@fontsource/poppins/300.css"
 import Breakpoint from "src/components/00-shared/_breakpoints.js"
 const GlobalStyle = createGlobalStyle`
 html{

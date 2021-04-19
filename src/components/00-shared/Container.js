@@ -4,7 +4,7 @@ import Breakpoint from "src/components/00-shared/_breakpoints.js"
 
 const StyledContainer = styled.div`
   width: 100%;
-  max-width: ${props => (props.small ? "960px" : "1200px")};
+  max-width: 600px;
   margin: auto;
   padding: 0 ${props => `${props.theme.spacing.padding.mobile}rem`};
   display: flex;
@@ -12,6 +12,7 @@ const StyledContainer = styled.div`
 
   box-sizing: border-box;
   @media ${Breakpoint.lg} {
+    max-width: ${props => (props.small ? "960px" : "1200px")};
     padding: 0 ${props => `${props.theme.spacing.padding.desktop}rem`};
     width: ${props => props.auto && "auto"};
   }

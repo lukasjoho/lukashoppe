@@ -16,6 +16,8 @@ import "swiper/components/pagination/pagination.scss"
 import "swiper/components/scrollbar/scrollbar.scss"
 import "src/components/00-shared/swiper.css"
 import SliderTitle from "./SliderTitle"
+import Breakpoint from "src/components/00-shared/_breakpoints.js"
+import IconCaret from "src/images/icons/icon-caret.svg"
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Mousewheel, Keyboard])
 const StyledModal = styled.div`
   position: fixed;
@@ -48,14 +50,52 @@ const StyledSwiper = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
-  padding-bottom: 20rem;
-  background: red;
+  padding-bottom: ${props => `${props.theme.spacing.spacer.mobile}rem`};
+  @media ${Breakpoint.lg} {
+    padding-bottom: ${props => `${props.theme.spacing.spacer.desktop}rem`};
+  }
   .swiper {
-    background: lightblue;
-
+    padding-bottom: 7rem;
+    position: relative;
+    @media ${Breakpoint.lg} {
+      padding-bottom: 2rem;
+    }
     .swiper-slide {
       &:last-child {
         margin-right: 0 !important;
+      }
+    }
+    .button-container {
+      display: flex;
+      justify-content: center;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      @media ${Breakpoint.lg} {
+        display: none;
+      }
+      .next,
+      .prev {
+        all: unset;
+        cursor: pointer;
+        position: relative;
+        z-index: 999;
+        font-size: 0;
+        padding: 1rem 1.5rem;
+        transition: 0.3s ease;
+        &:hover {
+          background: ${props => `${props.theme.colors.middlegrey}15`};
+        }
+        img {
+          width: 1rem;
+        }
+        &:first-child {
+          margin-right: 4rem;
+          img {
+            transform: rotate(180deg);
+          }
+        }
       }
     }
   }
@@ -74,10 +114,10 @@ const BuildSlider = () => {
         slidesPerView={1}
         navigation
         pagination={{ clickable: true }}
-        mousewheelControl={true}
+        // mousewheelControl={true}
         onSlideChange={() => console.log("slide change")}
         onSwiper={swiper => console.log(swiper)}
-        mousewheel={true}
+        // mousewheel={true}
         grabCursor={true}
         keyboard={{
           enabled: true,
@@ -129,6 +169,14 @@ const BuildSlider = () => {
             ></iframe>
           </StyledItem>
         </SwiperSlide>
+        <div className="button-container">
+          <button className="prev">
+            <img src={IconCaret} alt="" />
+          </button>
+          <button className="next">
+            <img src={IconCaret} alt="" />
+          </button>
+        </div>
       </Swiper>
       {show && (
         <StyledModal onClick={handleShow}>

@@ -9,8 +9,10 @@ const StyledButton = styled.button`
   font-size: 1.6rem;
   border: none;
   font-family: inherit;
+  width: 100%;
   cursor: pointer;
   @media ${Breakpoint.lg} {
+    width: auto;
     font-size: 1.8rem;
   }
 `

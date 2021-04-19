@@ -7,7 +7,6 @@ import SwiperCore, {
   Pagination,
   Scrollbar,
   A11y,
-  Mousewheel,
   Keyboard,
 } from "swiper"
 import { Swiper, SwiperSlide } from "swiper/react"
@@ -17,19 +16,33 @@ import "swiper/components/pagination/pagination.scss"
 import "swiper/components/scrollbar/scrollbar.scss"
 import "src/components/00-shared/swiper.css"
 import SliderTitle from "./SliderTitle"
-SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Mousewheel, Keyboard])
+import Breakpoint from "src/components/00-shared/_breakpoints.js"
+SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Keyboard])
 const StyledTestimonial = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
+  .author {
+    font-size: 1.4rem;
+    @media ${Breakpoint.lg} {
+      font-size: 1.6rem;
+    }
+  }
 `
 const StyledSwiper = styled.div`
   width: 100%;
   height: 100%;
-  padding-bottom: 20rem;
+  padding-bottom: ${props => `${props.theme.spacing.spacer.mobile}rem`};
+  @media ${Breakpoint.lg} {
+    padding-bottom: ${props => `${props.theme.spacing.spacer.desktop}rem`};
+  }
   .testimonialslider {
-    padding-bottom: 8rem;
+    padding-bottom: 4rem;
     position: relative;
+    @media ${Breakpoint.lg} {
+      padding-bottom: 8rem;
+    }
 
     .button-container {
       display: flex;
@@ -48,13 +61,13 @@ const StyledSwiper = styled.div`
         padding: 1rem 1.5rem;
         transition: 0.3s ease;
         &:hover {
-          background: ${props => props.theme.colors.middlegrey};
+          background: ${props => `${props.theme.colors.middlegrey}15`};
         }
         img {
-          width: 1.5rem;
+          width: 1rem;
         }
         &:first-child {
-          margin-right: 10rem;
+          margin-right: 4rem;
           img {
             transform: rotate(180deg);
           }
@@ -82,10 +95,10 @@ const TestimonialSlider = () => {
           nextEl: ".next",
           prevEl: ".prev",
         }}
-        mousewheelControl={true}
+        // mousewheelControl={true}
         onSlideChange={() => console.log("slide change")}
         onSwiper={swiper => console.log(swiper)}
-        mousewheel={true}
+        // mousewheel={true}
         grabCursor={true}
         keyboard={{
           enabled: true,
@@ -99,7 +112,7 @@ const TestimonialSlider = () => {
             <SwiperSlide>
               <StyledTestimonial>
                 <p>{testimonial.text.replace("<br/>", <br />)}</p>
-                <p>{testimonial.author}</p>
+                <p className="author">{testimonial.author}</p>
               </StyledTestimonial>
             </SwiperSlide>
           )

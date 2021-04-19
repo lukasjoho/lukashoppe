@@ -8,7 +8,7 @@ import Footer from "../Footer"
 import Breakpoint from "src/components/00-shared/_breakpoints.js"
 const StyledMenu = styled(motion.div)`
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   background: ${props => props.theme.colors.dark};
   position: fixed;
   left: 0;
@@ -200,7 +200,7 @@ const Menu = ({ isOpen, handleToggle }) => {
           />
         </motion.ul>
       </Nav>
-      <Footer />
+      <Footer isOpen={isOpen} />
     </StyledMenu>
   )
 }
