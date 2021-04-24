@@ -1,6 +1,6 @@
 //dependencies
 import * as React from "react"
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { getImage } from "gatsby-plugin-image"
 import { graphql, useStaticQuery, Link } from "gatsby"
 import styled from "styled-components"
 
@@ -16,26 +16,7 @@ import PremiumLink from "../../components/00-shared/PremiumLink"
 import BlogRow from "../../components/05-blog/BlogRow"
 import { BlogImage } from "../../components/05-blog/BlogImage"
 
-const StyledImage = styled.div`
-  margin-bottom: 1.5rem;
-  font-size: 0;
-
-  @media ${Breakpoint.lg} {
-    margin-bottom: 0rem;
-  }
-`
-const StyledImageInline = styled.div`
-  margin-bottom: 2rem;
-  font-size: 0;
-  &:last-child {
-    margin-bottom: 0;
-  }
-  @media ${Breakpoint.lg} {
-    margin-bottom: 2rem;
-  }
-`
-
-const FilmsPage = () => {
+const BorrowPage = () => {
   const { imageTeam, imageInstagram } = useStaticQuery(graphql`
     query {
       imageTeam: file(relativePath: { eq: "image-techlabs-team.jpg" }) {
@@ -62,12 +43,14 @@ const FilmsPage = () => {
   `)
   return (
     <Container small>
+      {/* Change BlogHead */}
       <BlogHead
         title="TechLabs"
         tags={["digital learning", "web development", "UX", "mentoring"]}
       />
 
       <BlogRow>
+        {/* change col centent */}
         <Col small>
           <h2>learnings</h2>
         </Col>
@@ -133,4 +116,4 @@ const FilmsPage = () => {
   )
 }
 
-export default FilmsPage
+export default BorrowPage

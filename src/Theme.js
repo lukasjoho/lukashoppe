@@ -19,7 +19,7 @@ const theme = {
     },
     spacer: {
       desktop: 20,
-      mobile: 10,
+      mobile: 12,
     },
   },
 }

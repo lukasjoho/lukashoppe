@@ -11,9 +11,17 @@ const StyledButton = styled.button`
   font-family: inherit;
   width: 100%;
   cursor: pointer;
+  &:hover {
+    filter: brightness(200%);
+  }
   @media ${Breakpoint.lg} {
     width: auto;
     font-size: 1.8rem;
+  }
+`
+const StyledLink = styled.a`
+  @media ${Breakpoint.lg} {
+    align-self: flex-start;
   }
 `
 const Button = ({ text, href, handleToggle }) => {
@@ -23,15 +31,9 @@ const Button = ({ text, href, handleToggle }) => {
         <StyledButton onClick={handleToggle}>{text}</StyledButton>
       )}
       {href && (
-        <a
-          href={href}
-          target="_blank"
-          style={{
-            alignSelf: "flex-start",
-          }}
-        >
+        <StyledLink href={href} target="_blank">
           <StyledButton>{text}</StyledButton>
-        </a>
+        </StyledLink>
       )}
     </>
   )

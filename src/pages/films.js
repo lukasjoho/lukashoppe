@@ -8,19 +8,12 @@ import Container from "../components/00-shared/Container"
 //page specific components
 
 import Tagline from "../components/00-shared/Tagline"
-
-import ContentRow from "../components/00-shared/ContentRow"
-import Image1 from "../images/photos/image-cover-moritz.jpg"
-import Image2 from "../images/photos/image-cover-ischgl.jpg"
-import Image3 from "../images/photos/image-cover-ingolstadt.jpg"
-import Image4 from "../images/photos/image-cover-hockey.jpg"
-import Masonry from "react-masonry-css"
 import Breakpoint from "src/components/00-shared/_breakpoints.js"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import styled from "styled-components"
 import Col from "../components/00-shared/Col"
-import Row from "../components/00-shared/Row"
+
 import IconPlay from "src/images/icons/icon-play.svg"
 
 const StyledFilmContainer = styled.div`
@@ -92,7 +85,7 @@ const FilmsPage = () => {
   const data = useStaticQuery(
     graphql`
       query {
-        allContentfulFilm {
+        allContentfulFilm(sort: { fields: order, order: DESC }) {
           edges {
             node {
               title
@@ -115,7 +108,14 @@ const FilmsPage = () => {
   return (
     <>
       <Container>
-        <Tagline text="when making films I go with the flow. I create atmospheres." />
+        <Tagline
+          text={
+            <>
+              when making films I go with the flow. <br />I seek to create
+              atmospheres.
+            </>
+          }
+        />
         <StyledFilmContainer>
           {data.allContentfulFilm.edges.map(edge => {
             return (

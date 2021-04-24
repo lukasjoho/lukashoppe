@@ -6,6 +6,8 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Link } from "gatsby"
 import Footer from "src/layouts/Footer"
 import Breakpoint from "src/components/00-shared/_breakpoints.js"
+import { useLocation } from "@reach/router"
+
 const StyledMenu = styled(motion.div)`
   width: 100vw;
   height: 100%;
@@ -40,9 +42,20 @@ const Nav = styled.nav`
       font-size: 4rem;
       font-weight: 700;
       line-height: 8rem;
+      span {
+        transition: 0.3s ease;
+        pointer-events: none;
+        &.active {
+          color: ${props => props.theme.colors.bright};
+        }
+      }
       &:hover {
         color: ${props => props.theme.colors.bright};
+        > span {
+          color: ${props => props.theme.colors.bright};
+        }
       }
+
       @media ${Breakpoint.lg} {
         font-size: 6rem;
         font-weight: 700;
@@ -91,6 +104,7 @@ const NavItem = ({
   handleExpanded,
   expanded,
   index,
+  location,
 }) => {
   return (
     <>
@@ -105,7 +119,7 @@ const NavItem = ({
             transition={{ delay: delay }}
             id={itemkey}
           >
-            {text}
+            <span>{text}</span>
             <AnimatePresence>
               {expanded && index == itemkey && (
                 <motion.ul
@@ -116,8 +130,18 @@ const NavItem = ({
                   exit={{ height: 0 }}
                 >
                   {dropdown.map(item => (
-                    <Link to={`${item[1]}`}>
-                      <li onClick={handleToggle}>{item[0]}</li>
+                    <Link to={`${item[1]}`} key={item}>
+                      <li onClick={handleToggle}>
+                        <span
+                          className={
+                            (location == item[1] ||
+                              location == `${item[1]}/`) &&
+                            "active"
+                          }
+                        >
+                          {item[0]}
+                        </span>
+                      </li>
                     </Link>
                   ))}
                 </motion.ul>
@@ -135,7 +159,13 @@ const NavItem = ({
             exit="after"
             transition={{ delay: delay }}
           >
-            {text}
+            <span
+              className={
+                (location == link || location == `${link}/`) && "active"
+              }
+            >
+              {text}
+            </span>
           </motion.li>
         </Link>
       )}
@@ -159,6 +189,8 @@ const Menu = ({ isOpen, handleToggle }) => {
     console.log("Target: ", e.target.id)
     setIndex(e.target.id)
   }
+  console.log(useLocation().pathname)
+  const location = useLocation().pathname
   return (
     <StyledMenu
       initial={{ opacity: 0 }}
@@ -167,18 +199,26 @@ const Menu = ({ isOpen, handleToggle }) => {
     >
       <Nav>
         <motion.ul className="mainlist">
-          <NavItem link="/" text="home" delay={0} handleToggle={handleToggle} />
+          <NavItem
+            link="/"
+            text="home"
+            delay={0}
+            handleToggle={handleToggle}
+            location={location}
+          />
           <NavItem
             link="/about"
             text="about"
             delay={0.05}
             handleToggle={handleToggle}
+            location={location}
           />
           <NavItem
             link="/product"
             text="product"
             delay={0.1}
             handleToggle={handleToggle}
+            location={location}
           />
           <NavItem
             link="/media"
@@ -193,6 +233,7 @@ const Menu = ({ isOpen, handleToggle }) => {
             ]}
             itemkey="media"
             index={index}
+            location={location}
           />
           <NavItem
             link="/"
@@ -201,9 +242,13 @@ const Menu = ({ isOpen, handleToggle }) => {
             handleToggle={handleToggle}
             handleExpanded={handleExpanded}
             expanded={expanded}
-            dropdown={[["techlabs", "/blog/techlabs"]]}
+            dropdown={[
+              ["techlabs", "/blog/techlabs"],
+              ["borrow", "/blog/borrow"],
+            ]}
             itemkey="blog"
             index={index}
+            location={location}
           />
         </motion.ul>
       </Nav>

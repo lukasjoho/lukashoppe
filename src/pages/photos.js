@@ -22,7 +22,8 @@ import styled from "styled-components"
 const MasonryItem = styled.div`
   position: relative;
   background: grey;
-  margin-bottom: ${props => `${props.theme.spacing.padding.mobile}rem`};
+  margin-bottom: ${props =>
+    `calc(0.5 * ${props.theme.spacing.padding.mobile}rem)`};
   @media ${Breakpoint.lg} {
     margin-bottom: ${props => `${props.theme.spacing.padding.desktop}rem`};
   }
@@ -71,6 +72,7 @@ const StyledMasonry = styled(Masonry)`
     margin-left: ${props =>
       `${-1 * props.theme.spacing.padding.mobile}rem`}; /* gutter size offset */
     width: 100%;
+    margin-right: -1.5rem;
     flex-grow: 1;
     @media ${Breakpoint.lg} {
       margin-left: ${props => `${-1 * props.theme.spacing.padding.desktop}rem`};
@@ -78,7 +80,7 @@ const StyledMasonry = styled(Masonry)`
   }
   .my-masonry-grid_column {
     padding-left: ${props =>
-      `${props.theme.spacing.padding.mobile}rem`}; /* gutter size */
+      `calc(0.5 * ${props.theme.spacing.padding.mobile}rem)`}; /* gutter size */
     background-clip: padding-box;
     @media ${Breakpoint.lg} {
       padding-left: ${props => `${props.theme.spacing.padding.desktop}rem`};
@@ -87,13 +89,13 @@ const StyledMasonry = styled(Masonry)`
 `
 const breakpointColumnsObj = {
   default: 3,
-  960: 1,
+  960: 2,
 }
 const PhotosPage = () => {
   const data = useStaticQuery(
     graphql`
       query {
-        allContentfulGallery {
+        allContentfulGallery(sort: { fields: order, order: DESC }) {
           edges {
             node {
               title

@@ -51,6 +51,16 @@ html{
         line-height: 1.8;
       font-size: 1.8rem;
       margin-bottom: 2rem;
+      ul{
+        padding-left: 20px;
+      }
+      &.quote{
+        border-left: 3px solid ${props => props.theme.colors.dark};
+        padding-left: 1.5rem;
+        font-style: italic;
+        font-size: 1.4rem;
+        @media ${Breakpoint.lg} {font-size: 1.6rem}
+      }
     }
     }
     a {

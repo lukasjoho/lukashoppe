@@ -10,7 +10,9 @@ const StyledImage = styled.div`
   flex-shrink: 0;
   font-size: 0;
   margin-bottom: 3rem;
+  margin-top: 0.5rem;
   @media ${Breakpoint.lg} {
+    margin-top: 0rem;
     height: 33rem;
     width: 33rem;
     margin-right: 6rem;

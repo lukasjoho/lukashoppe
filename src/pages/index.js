@@ -33,31 +33,33 @@ const StyledTextblock = styled.div`
     }
   }
 `
-const IndexPage = ({ handleToggle }) => (
-  <>
-    <FullPage auto>
-      <Container small auto>
-        <Image />
-        <StyledTextblock>
-          <h1>
-            hey, I am Lukas
-            <br />i like to build.
-          </h1>
-          <p>
-            Currently, I explore the world of product management. <br />I am
-            studying technology and management. <br />I like to capture moments
-            through photography. <br />
-            Say hello at{" "}
-            <PremiumLink href="mailto:mail@lukashoppe.com">
-              mail@lukashoppe.com
-            </PremiumLink>
-          </p>
+const IndexPage = ({ handleToggle }) => {
+  return (
+    <>
+      <FullPage auto>
+        <Container small auto>
+          <Image />
+          <StyledTextblock>
+            <h1>
+              hey, I am Lukas
+              <br />i like to build.
+            </h1>
+            <p>
+              Currently, I explore the world of product management. <br />I am
+              studying technology and management. <br />I like to capture
+              moments through photography. <br />
+              Say hello at{" "}
+              <PremiumLink href="mailto:mail@lukashoppe.com">
+                mail@lukashoppe.com
+              </PremiumLink>
+            </p>
 
-          <Button text="My Work" handleToggle={handleToggle} />
-        </StyledTextblock>
-      </Container>
-    </FullPage>
-  </>
-)
+            <Button text="My Work" handleToggle={handleToggle} />
+          </StyledTextblock>
+        </Container>
+      </FullPage>
+    </>
+  )
+}
 
 export default IndexPage
