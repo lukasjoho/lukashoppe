@@ -5,12 +5,21 @@ import { graphql, Link } from "gatsby"
 import styled from "styled-components"
 import Container from "../components/00-shared/Container"
 import IconArrow from "src/images/icons/icon-arrow.svg"
+import IconArrowDark from "src/images/icons/icon-arrow-dark.svg"
+import InstagramEmbed from "react-instagram-embed"
 export const query = graphql`
   query($slug: String!) {
     contentfulFilm(slug: { eq: $slug }) {
       title
       category
       youtube
+      instagram
+      video {
+        file {
+          url
+        }
+      }
+      vertical
     }
   }
 `
@@ -37,15 +46,55 @@ const StyledHeader = styled.div`
   }
   p {
     margin: 0;
+    font-size: 1.4rem;
   }
 `
 const StyledBack = styled.div`
   display: flex;
   align-items: center;
-  margin-top: 2rem;
+  margin-top: 5rem;
   color: ${props => props.theme.colors.middlegrey};
+  font-weight: 300;
+  transition: 0.3s ease;
+  position: relative;
+  .dark,
+  .default {
+    transition: 0.3s ease;
+  }
+  .dark {
+    position: absolute;
+    left: 0;
+    opacity: 0;
+  }
+  .default {
+    position: relative;
+    opacity: 1;
+  }
+  &:hover {
+    color: ${props => props.theme.colors.dark};
+    .dark,
+    .default {
+      transform: translateX(-0.5rem);
+    }
+    .dark {
+      opacity: 1;
+    }
+    .default {
+      opacity: 0;
+    }
+  }
   img {
     margin-right: 1rem;
+  }
+`
+const StyledVideo = styled.div`
+  max-width: 720px;
+  &.vertical {
+    max-width: 400px;
+  }
+  video {
+    width: 100%;
+    outline: none;
   }
 `
 const StyledFilm = styled.div`
@@ -53,6 +102,14 @@ const StyledFilm = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
+`
+const StyledInstagram = styled.div`
+  font-size: 0;
+  display: flex;
+  justify-content: center;
+  iframe {
+    background: red;
+  }
 `
 const Youtube = ({ link }) => {
   return (
@@ -71,7 +128,8 @@ const Youtube = ({ link }) => {
 }
 const Film = props => {
   return (
-    <FullPage>
+    <FullPage autoall>
+      {/* <FullPage autoall={props.data.contentfulFilm.instagram && true}> */}
       <Container small>
         <StyledFilm>
           <StyledHeader>
@@ -81,10 +139,43 @@ const Film = props => {
           {props.data.contentfulFilm.youtube && (
             <Youtube link={props.data.contentfulFilm.youtube} />
           )}
+          {props.data.contentfulFilm.instagram && (
+            <>
+              <StyledInstagram>
+                <InstagramEmbed
+                  url={props.data.contentfulFilm.instagram}
+                  clientAccessToken="307951190929031|a0e4ae1229fe77901ee400e732645034"
+                  maxWidth={375}
+                  hideCaption={true}
+                  containerTagName="div"
+                  protocol=""
+                  injectScript
+                  onLoading={() => console.log("loading ...")}
+                  onSuccess={() => console.log("succeeded")}
+                  onAfterRender={() => console.log("rendered")}
+                  onFailure={() => console.log("failed")}
+                />
+              </StyledInstagram>
+            </>
+          )}
+          {props.data.contentfulFilm.video && (
+            <>
+              <StyledVideo
+                className={props.data.contentfulFilm.vertical && "vertical"}
+              >
+                <video
+                  autoplay
+                  src={props.data.contentfulFilm.video.file.url}
+                  controls
+                />
+              </StyledVideo>
+            </>
+          )}
 
           <Link to="/films">
             <StyledBack>
-              <img src={IconArrow} alt="" height="16px" />
+              <img className="default" src={IconArrow} alt="" height="16px" />
+              <img className="dark" src={IconArrowDark} alt="" height="16px" />
               Back To All
             </StyledBack>
           </Link>

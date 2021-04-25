@@ -7,6 +7,7 @@ import Lottie from "lottie-react-web"
 import dataHamburger from "src/data/hamburger"
 import dataHamburgerBright from "src/data/hamburgerBright"
 import GetWindowDimensions from "src/components/00-shared/_getWindowDimensions.js"
+import { Link } from "gatsby"
 const StyledHeader = styled.header`
   height: ${props => `${props.theme.spacing.layout.mobile}rem`};
   width: 100%;
@@ -17,9 +18,9 @@ const StyledHeader = styled.header`
   z-index: 999;
   position: fixed;
   top: 0;
-  /* background: ${props => props.theme.colors.bright};
-   */
   background: transparent;
+  background: ${props => `${props.theme.colors.bright}`};
+
   transition: 0.3s;
   @media ${Breakpoint.lg} {
     height: ${props => `${props.theme.spacing.layout.desktop}rem`};
@@ -37,7 +38,7 @@ const StyledLottie = styled.div`
   cursor: pointer;
   transition: 0.3s ease;
   &:hover {
-    transform: scale(1.1);
+    /* transform: scale(1.1); */
   }
   @media ${Breakpoint.lg} {
     right: ${props =>
@@ -83,6 +84,7 @@ const Hamburger = styled.div`
 `
 const StyledLogo = styled.div`
   height: 3rem;
+  cursor: pointer;
   @media ${Breakpoint.lg} {
     height: 4rem;
   }
@@ -96,13 +98,15 @@ const Header = ({ handleToggle, isOpen, isPaused }) => {
   const lottieWidth = isDesktop ? 60 : 50
   return (
     <StyledHeader className={isOpen && "isOpen"}>
-      <StyledLogo>
-        {isOpen ? (
-          <img src={IconLogoBright} alt="" height="100%" />
-        ) : (
-          <img src={IconLogo} alt="" height="100%" />
-        )}
-      </StyledLogo>
+      <Link to="/">
+        <StyledLogo>
+          {isOpen ? (
+            <img src={IconLogoBright} alt="" height="100%" />
+          ) : (
+            <img src={IconLogo} alt="" height="100%" />
+          )}
+        </StyledLogo>
+      </Link>
       {/* <Hamburger onClick={handleToggle} className={isOpen && "isOpen"}>
         <div />
 

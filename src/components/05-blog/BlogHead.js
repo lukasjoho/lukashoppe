@@ -13,6 +13,11 @@ const StyledHead = styled.div`
       margin-bottom: 0rem;
     }
   }
+  h2 {
+    color: ${props => props.theme.colors.middlegrey};
+    font-size: 1.8rem;
+    font-weight: 400;
+  }
   .tags {
     display: flex;
     flex-wrap: wrap;
@@ -36,10 +41,11 @@ const Tag = ({ text }) => {
   return <StyledTag>{text}</StyledTag>
 }
 
-const BlogHead = ({ title, tags }) => {
+const BlogHead = ({ subtitle, title, tags }) => {
   return (
     <StyledHead>
       <h1>{title}</h1>
+      {subtitle && <h2>{subtitle}</h2>}
       <div className="tags">
         {tags.map(tag => (
           <Tag text={tag} />

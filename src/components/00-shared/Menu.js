@@ -243,7 +243,7 @@ const Menu = ({ isOpen, handleToggle }) => {
             handleExpanded={handleExpanded}
             expanded={expanded}
             dropdown={[
-              ["techlabs", "/blog/techlabs"],
+              ["react 101", "/blog/react-101"],
               ["borrow", "/blog/borrow"],
             ]}
             itemkey="blog"

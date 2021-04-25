@@ -21,8 +21,10 @@ const StyledTextblock = styled.div`
   justify-content: space-between;
   align-items: flex-start;
   padding-bottom: 3rem;
+  width: 100%;
   @media ${Breakpoint.lg} {
     padding-bottom: 0rem;
+    width: auto;
   }
   h1 {
     font-size: 2.5rem;
@@ -37,7 +39,7 @@ const IndexPage = ({ handleToggle }) => {
   return (
     <>
       <FullPage auto>
-        <Container small auto>
+        <Container auto>
           <Image />
           <StyledTextblock>
             <h1>
@@ -45,9 +47,9 @@ const IndexPage = ({ handleToggle }) => {
               <br />i like to build.
             </h1>
             <p>
-              Currently, I explore the world of product management. <br />I am
-              studying technology and management. <br />I like to capture
-              moments through photography. <br />
+              Currently, I am exploring the world of product management. <br />
+              Before that, I worked as a web developer and designer.
+              <br />I like to capture moments through photography. <br />
               Say hello at{" "}
               <PremiumLink href="mailto:mail@lukashoppe.com">
                 mail@lukashoppe.com

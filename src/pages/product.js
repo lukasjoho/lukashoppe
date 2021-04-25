@@ -23,6 +23,7 @@ const ProductPage = () => {
     imageExcyted,
     imageSustragil,
     imageNewschool,
+    imageLh,
   } = useStaticQuery(graphql`
     query {
       imageBonvelo: file(relativePath: { eq: "product/image-bonvelo.jpg" }) {
@@ -81,6 +82,15 @@ const ProductPage = () => {
           )
         }
       }
+      imageLh: file(relativePath: { eq: "product/image-lh.jpg" }) {
+        childImageSharp {
+          gatsbyImageData(
+            width: 1000
+            placeholder: BLURRED
+            formats: [AUTO, WEBP]
+          )
+        }
+      }
     }
   `)
   return (
@@ -93,8 +103,7 @@ i believe that the art of building is the art of listening to your customer"
         <ContentRow
           subtitle="e-commerce"
           title="bikeshop design concept"
-          text="This is a personal crypto website I created for my friend Nik. As Nik is a crypto enthusiast we went for a site that features his business endeavours, his favourite books, papers and his very own scientific research.
-I then coded the site with the javascript framework NextJS."
+          text="As a weekend side project I redesigned the product page of bonvelo's online shop. I wanted to put my prototyping capabilities to the test. After redesigning the page for 4h with Figma I coded a high-fidelity prototype another 4 hours with NextJS. I spent the last 6h of my weekend to create a video where I explain my thought process behind the design in 100 seconds."
           href="https://biersafe.netlify.app/"
           button="see more"
           image={getImage(imageBonvelo.childImageSharp.gatsbyImageData)}
@@ -153,6 +162,17 @@ I want to use the full range of digital tools I have at my hands and blend them 
           href="https://aboutnik.com/"
           button="visit aboutnik"
           image={getImage(imageExcyted.childImageSharp.gatsbyImageData)}
+          reverseMobile
+          inside
+        />
+        <ContentRow
+          subtitle="my very own personal website"
+          title="lukas hoppe"
+          text="The era of digital technology is changing the types of products and services, the process of value creation and tools that enable us to to use and apply our own ideas and imagination.
+I want to use the full range of digital tools I have at my hands and blend them with my creativity to create great content for other peoples ideas, for start ups, businesses and my personal projects."
+          href="https://aboutnik.com/"
+          button="visit aboutnik"
+          image={getImage(imageLh.childImageSharp.gatsbyImageData)}
           reverseMobile
           inside
         />

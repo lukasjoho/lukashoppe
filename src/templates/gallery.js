@@ -17,6 +17,7 @@ import "swiper/components/navigation/navigation.scss"
 import "swiper/components/pagination/pagination.scss"
 import "swiper/components/scrollbar/scrollbar.scss"
 import "../components/00-shared/swiper.css"
+import { motion, AnimatePresence } from "framer-motion"
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Mousewheel, Keyboard])
 
 const Container = styled.div`
@@ -24,7 +25,7 @@ const Container = styled.div`
   width: 100%;
   height: 100%;
 `
-const StyledImage = styled.div`
+const StyledImage = styled(motion.div)`
   background: violet;
   width: 100%;
   height: ${props =>
@@ -40,6 +41,13 @@ export const query = graphql`
     contentfulGallery(slug: { eq: $slug }) {
       title
       category
+      cover {
+        gatsbyImageData(
+          width: 1000
+          placeholder: BLURRED
+          formats: [AUTO, WEBP]
+        )
+      }
       images {
         gatsbyImageData(
           width: 1000
@@ -50,7 +58,10 @@ export const query = graphql`
     }
   }
 `
-
+const variants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1 },
+}
 const Gallery = props => {
   return (
     <FullPage>
@@ -70,20 +81,28 @@ const Gallery = props => {
             enabled: true,
           }}
         >
+          <SwiperSlide>
+            <StyledImage initial="hidden" animate="visible" variants={variants}>
+              <GatsbyImage
+                image={getImage(
+                  props.data.contentfulGallery.cover.gatsbyImageData
+                )}
+              />
+            </StyledImage>
+          </SwiperSlide>
           {props.data.contentfulGallery.images.map(image => {
             return (
               <SwiperSlide>
-                <StyledImage>
+                <StyledImage
+                  initial="hidden"
+                  animate="visible"
+                  variants={variants}
+                >
                   <GatsbyImage image={getImage(image.gatsbyImageData)} />
                 </StyledImage>
               </SwiperSlide>
             )
           })}
-          <SwiperSlide>Slide 1</SwiperSlide>
-          <SwiperSlide>Slide 2</SwiperSlide>
-          <SwiperSlide>Slide 3</SwiperSlide>
-          <SwiperSlide>Slide 4</SwiperSlide>
-          ...
         </Swiper>
         {/* <div className="swiper-container">
           <div className="swiper-wrapper">

@@ -52,7 +52,7 @@ const MasonryItem = styled.div`
       font-weight: 500;
     }
     h3 {
-      color: ${props => props.theme.colors.middlegrey};
+      color: ${props => props.theme.colors.bright};
       font-size: 1.4rem;
       font-weight: 300;
       position: absolute;
@@ -75,6 +75,7 @@ const StyledMasonry = styled(Masonry)`
     margin-right: -1.5rem;
     flex-grow: 1;
     @media ${Breakpoint.lg} {
+      margin-right: unset;
       margin-left: ${props => `${-1 * props.theme.spacing.padding.desktop}rem`};
     }
   }
@@ -88,7 +89,8 @@ const StyledMasonry = styled(Masonry)`
   }
 `
 const breakpointColumnsObj = {
-  default: 3,
+  default: 4,
+  1600: 3,
   960: 2,
 }
 const PhotosPage = () => {
@@ -122,7 +124,8 @@ const PhotosPage = () => {
           text="when I make pictures 
 I connect to the people I shoot."
         />
-
+      </Container>
+      <Container large>
         <StyledMasonry
           breakpointCols={breakpointColumnsObj}
           className="my-masonry-grid"

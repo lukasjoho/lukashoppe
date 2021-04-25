@@ -54,9 +54,8 @@ const BorrowPage = () => {
     <Container small>
       {/* change bloghead  */}
       <BlogHead
-        title="borrow"
-        subtitle="a techlabs project"
-        tags={["project work", "web development", "UX"]}
+        title="react 101"
+        tags={["frontend development", "javascript", "concepts"]}
       />
       {/* change row inside */}
       <BlogRow>
@@ -65,22 +64,10 @@ const BorrowPage = () => {
         </Col>
         <Col large>
           <p>
-            Borrow is a project I supported as a web development mentor in the{" "}
-            <PremiumLink href="https://techlabs.org">TechLabs</PremiumLink>{" "}
-            Digital Shaper Program. Part of the program is a project phase where
-            participants implement project ideas to apply their newly acquired
-            tech skills in a collaborative setting and get the chance to
-            participate in a real world product development process.
-          </p>
-          <BlogImage
-            inline
-            image={getImage(image1.childImageSharp.gatsbyImageData)}
-          />
-          <p>
-            The web development track aims to give techies (participants of the
-            digital shaper program) the right set of tools to design websites,
-            shape product experiences and dive into the field of dynamic
-            web-application development.
+            Last semester I was a mentor at the digital shaper programm of
+            TEchLabs that aims to equip young people with state-of-the-art tech
+            skills in the fields of data science, artificial intelligence, web
+            development and ux design.
           </p>
         </Col>
       </BlogRow>
@@ -141,7 +128,7 @@ const BorrowPage = () => {
       </BlogRow>
       <BlogRow>
         <Col small>
-          <h2>the setback</h2>
+          <h2>the drawback</h2>
         </Col>
         <Col large>
           <p>

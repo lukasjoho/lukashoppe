@@ -111,11 +111,13 @@ const FilmsPage = () => {
         <Tagline
           text={
             <>
-              when making films I go with the flow. <br />I seek to create
+              when making films I go with the flow. I seek to create
               atmospheres.
             </>
           }
         />
+      </Container>
+      <Container>
         <StyledFilmContainer>
           {data.allContentfulFilm.edges.map(edge => {
             return (

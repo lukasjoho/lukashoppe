@@ -2,6 +2,8 @@ import React from "react"
 import styled from "styled-components"
 import Breakpoint from "src/components/00-shared/_breakpoints.js"
 const StyledFullPage = styled.div`
+  min-height: ${props =>
+    `calc(100vh - 2*${props.theme.spacing.layout.mobile}rem)`};
   height: ${props => `calc(100vh - 2*${props.theme.spacing.layout.mobile}rem)`};
 
   display: flex;
@@ -12,18 +14,31 @@ const StyledFullPage = styled.div`
   &.heightauto {
     height: auto;
   }
+  &.autoall {
+    height: auto;
+  }
   @media ${Breakpoint.lg} {
+    min-height: ${props =>
+      `calc(100vh - 2*${props.theme.spacing.layout.desktop}rem)`};
     height: ${props =>
       `calc(100vh - 2*${props.theme.spacing.layout.desktop}rem)`};
     &.heightauto {
+      height: auto;
       height: ${props =>
         `calc(100vh - 2*${props.theme.spacing.layout.desktop}rem)`};
     }
+    &.autoall {
+      height: auto;
+    }
   }
 `
-const FullPage = ({ children, auto }) => {
+const FullPage = ({ children, auto, autoall }) => {
   return (
-    <StyledFullPage className={auto && "heightauto"}>{children}</StyledFullPage>
+    <StyledFullPage
+      className={(auto && "heightauto") || (autoall && "autoall")}
+    >
+      {children}
+    </StyledFullPage>
   )
 }
 
