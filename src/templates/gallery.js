@@ -90,19 +90,20 @@ const Gallery = props => {
               />
             </StyledImage>
           </SwiperSlide>
-          {props.data.contentfulGallery.images.map(image => {
-            return (
-              <SwiperSlide>
-                <StyledImage
-                  initial="hidden"
-                  animate="visible"
-                  variants={variants}
-                >
-                  <GatsbyImage image={getImage(image.gatsbyImageData)} />
-                </StyledImage>
-              </SwiperSlide>
-            )
-          })}
+          {props.data.contentfulGallery.images &&
+            props.data.contentfulGallery.images.map(image => {
+              return (
+                <SwiperSlide>
+                  <StyledImage
+                    initial="hidden"
+                    animate="visible"
+                    variants={variants}
+                  >
+                    <GatsbyImage image={getImage(image.gatsbyImageData)} />
+                  </StyledImage>
+                </SwiperSlide>
+              )
+            })}
         </Swiper>
         {/* <div className="swiper-container">
           <div className="swiper-wrapper">
