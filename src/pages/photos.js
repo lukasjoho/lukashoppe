@@ -106,7 +106,7 @@ const PhotosPage = () => {
               slug
               cover {
                 gatsbyImageData(
-                  width: 1000
+                  width: 450
                   placeholder: BLURRED
                   formats: [AUTO, WEBP]
                 )
