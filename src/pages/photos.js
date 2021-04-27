@@ -48,16 +48,24 @@ const MasonryItem = styled.div`
     }
     h2 {
       color: ${props => props.theme.colors.bright};
-      font-size: 3rem;
+      font-size: 1.8rem;
       font-weight: 500;
+      margin-bottom: 0;
+      line-height: 1.2;
+      @media ${Breakpoint.lg} {
+        font-size: 3rem;
+      }
     }
     h3 {
       color: ${props => props.theme.colors.bright};
-      font-size: 1.4rem;
+      font-size: 1.2rem;
       font-weight: 300;
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
+      @media ${Breakpoint.lg} {
+        font-size: 1.4rem;
+      }
     }
   }
   &:hover {
