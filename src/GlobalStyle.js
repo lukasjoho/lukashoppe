@@ -7,6 +7,7 @@ import Breakpoint from "src/components/00-shared/_breakpoints.js"
 const GlobalStyle = createGlobalStyle`
 html{
   font-size: 62.5%;
+  -webkit-tap-highlight-color: transparent;
   body{
     font-size: 1.6rem;
     background: ${props => props.theme.colors.bright};

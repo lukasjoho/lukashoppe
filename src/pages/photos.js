@@ -9,11 +9,6 @@ import Container from "../components/00-shared/Container"
 
 import Tagline from "../components/00-shared/Tagline"
 
-import ContentRow from "../components/00-shared/ContentRow"
-import Image1 from "../images/photos/image-cover-moritz.jpg"
-import Image2 from "../images/photos/image-cover-ischgl.jpg"
-import Image3 from "../images/photos/image-cover-ingolstadt.jpg"
-import Image4 from "../images/photos/image-cover-hockey.jpg"
 import Masonry from "react-masonry-css"
 import Breakpoint from "src/components/00-shared/_breakpoints.js"
 import { useStaticQuery, graphql, Link } from "gatsby"

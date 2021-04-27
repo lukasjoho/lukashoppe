@@ -19,7 +19,6 @@ const StyledHeader = styled.header`
   position: fixed;
   top: 0;
   background: transparent;
-  background: ${props => `${props.theme.colors.bright}`};
 
   transition: 0.3s;
   @media ${Breakpoint.lg} {

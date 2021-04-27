@@ -116,20 +116,20 @@ const Footer = ({ isOpen }) => (
 
       <span />
       <LinkItem
-        href="https://www.youtube.com/channel/UCSePudpZ9upO0exjh9uuh9w"
-        isOpen={isOpen}
-        icon={Icon4}
-        iconbright={Icon4Bright}
-        icondark={Icon4Dark}
-      />
-
-      <span />
-      <LinkItem
         href="https://github.com/lukasjoho"
         isOpen={isOpen}
         icon={Icon5}
         iconbright={Icon5Bright}
         icondark={Icon5Dark}
+      />
+
+      <span />
+      <LinkItem
+        href="https://www.youtube.com/channel/UCSePudpZ9upO0exjh9uuh9w"
+        isOpen={isOpen}
+        icon={Icon4}
+        iconbright={Icon4Bright}
+        icondark={Icon4Dark}
       />
     </Ul>
   </StyledFooter>

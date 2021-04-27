@@ -13,6 +13,7 @@ const StyledButton = styled.button`
   font-family: inherit;
   width: 100%;
   cursor: pointer;
+  outline: none;
   &:hover {
     filter: brightness(200%);
   }
