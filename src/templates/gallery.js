@@ -59,8 +59,8 @@ export const query = graphql`
   }
 `
 const variants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1 },
+  hidden: { x: 200, opacity: 0 },
+  visible: { x: 0, opacity: 1 },
 }
 const Gallery = props => {
   return (
@@ -81,29 +81,45 @@ const Gallery = props => {
             enabled: true,
           }}
         >
-          <SwiperSlide>
-            <StyledImage initial="hidden" animate="visible" variants={variants}>
-              <GatsbyImage
-                image={getImage(
-                  props.data.contentfulGallery.cover.gatsbyImageData
-                )}
-              />
-            </StyledImage>
-          </SwiperSlide>
-          {props.data.contentfulGallery.images &&
-            props.data.contentfulGallery.images.map(image => {
-              return (
-                <SwiperSlide>
-                  <StyledImage
-                    initial="hidden"
-                    animate="visible"
-                    variants={variants}
-                  >
-                    <GatsbyImage image={getImage(image.gatsbyImageData)} />
-                  </StyledImage>
-                </SwiperSlide>
-              )
-            })}
+          <AnimatePresence>
+            <SwiperSlide>
+              <motion.div
+                initial="hidden"
+                animate="visible"
+                variants={variants}
+                transition={{ duration: 1 }}
+              >
+                <StyledImage>
+                  {/* <img src={props.data.contentfulGallery.cover.file.url} alt="" /> */}
+
+                  <GatsbyImage
+                    image={getImage(
+                      props.data.contentfulGallery.cover.gatsbyImageData
+                    )}
+                  />
+                </StyledImage>
+              </motion.div>
+            </SwiperSlide>
+
+            {props.data.contentfulGallery.images &&
+              props.data.contentfulGallery.images.map((image, index) => {
+                console.log(index)
+                return (
+                  <SwiperSlide>
+                    <motion.div
+                      initial="hidden"
+                      animate="visible"
+                      variants={variants}
+                      transition={{ duration: 1, delay: 0 }}
+                    >
+                      <StyledImage>
+                        <GatsbyImage image={getImage(image.gatsbyImageData)} />
+                      </StyledImage>
+                    </motion.div>
+                  </SwiperSlide>
+                )
+              })}
+          </AnimatePresence>
         </Swiper>
         {/* <div className="swiper-container">
           <div className="swiper-wrapper">

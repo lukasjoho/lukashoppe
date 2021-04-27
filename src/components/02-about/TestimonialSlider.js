@@ -23,6 +23,7 @@ const StyledTestimonial = styled.div`
   flex-direction: column;
   align-items: center;
   text-align: center;
+  max-width: 720px;
   .author {
     font-size: 1.4rem;
     @media ${Breakpoint.lg} {

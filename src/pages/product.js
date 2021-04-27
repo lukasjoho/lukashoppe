@@ -104,7 +104,7 @@ i believe that the art of building is the art of listening to your customer"
           subtitle="e-commerce"
           title="bikeshop design concept"
           text="As a weekend side project I redesigned the product page of bonvelo's online shop. I wanted to put my prototyping capabilities to the test. After redesigning the page for 4h with Figma I coded a high-fidelity prototype another 4 hours with NextJS. I spent the last 6h of my weekend to create a video where I explain my thought process behind the design in 100 seconds."
-          href="https://biersafe.netlify.app/"
+          link="/blog/prototyping"
           button="see more"
           image={getImage(imageBonvelo.childImageSharp.gatsbyImageData)}
           reverseMobile
@@ -113,8 +113,7 @@ i believe that the art of building is the art of listening to your customer"
         <ContentRow
           subtitle="e-commerce"
           title="biersafe"
-          text="The era of digital technology is changing the types of products and services, the process of value creation and tools that enable us to to use and apply our own ideas and imagination.
-I want to use the full range of digital tools I have at my hands and blend them with my creativity to create great content for other peoples ideas, for start ups, businesses and my personal projects."
+          text="This is an ecommerce shopify design, that I crafted for a beer accessory manufacturer from Germany together with the technology studio excyted. The shop uses the shopify storefront api as the shop backend and GatsbyJS on the frontend. The branding was created together with the agency StupidAndSimple"
           href="https://aboutnik.com/"
           button="visit aboutnik"
           image={getImage(imageBiersafe.childImageSharp.gatsbyImageData)}
@@ -124,8 +123,8 @@ I want to use the full range of digital tools I have at my hands and blend them 
         <ContentRow
           subtitle="personal crypto website"
           title="about nik"
-          text="The era of digital technology is changing the types of products and services, the process of value creation and tools that enable us to to use and apply our own ideas and imagination.
-I want to use the full range of digital tools I have at my hands and blend them with my creativity to create great content for other peoples ideas, for start ups, businesses and my personal projects."
+          text="This is a personal crypto website I created for my friend Nik. As Nik is a crypto enthusiast we went for a site that features his business endeavours, his favourite books, papers and his very own scientific research.
+I then coded the site with the javascript framework NextJS."
           href="https://aboutnik.com/"
           button="visit aboutnik"
           image={getImage(imageNikolas.childImageSharp.gatsbyImageData)}
@@ -135,9 +134,8 @@ I want to use the full range of digital tools I have at my hands and blend them 
         <ContentRow
           subtitle="school website"
           title="new school"
-          text="The era of digital technology is changing the types of products and services, the process of value creation and tools that enable us to to use and apply our own ideas and imagination.
-I want to use the full range of digital tools I have at my hands and blend them with my creativity to create great content for other peoples ideas, for start ups, businesses and my personal projects."
-          href="https://aboutnik.com/"
+          text="I developed this school website together with the technology studio excyted. We used GatsbyJS on the frontend and Prismic as content management system on the backend. This gives the school the opportunity to change the websites content and toggle components whenever they like."
+          href="https://new-school.netlify.app/"
           button="visit newschool"
           image={getImage(imageNewschool.childImageSharp.gatsbyImageData)}
           reverseMobile
@@ -146,8 +144,7 @@ I want to use the full range of digital tools I have at my hands and blend them 
         <ContentRow
           subtitle="startup landing page"
           title="sustragil"
-          text="The era of digital technology is changing the types of products and services, the process of value creation and tools that enable us to to use and apply our own ideas and imagination.
-I want to use the full range of digital tools I have at my hands and blend them with my creativity to create great content for other peoples ideas, for start ups, businesses and my personal projects."
+          text="I designed and developed this landing page for a startup in the chemical supply industry. I designed the one-pager in Figma and developed it with GatsbyJS. The site features a custom tailored hero animation which I created in After Effects. "
           href="https://sustragil.com/"
           button="visit sustragil"
           image={getImage(imageSustragil.childImageSharp.gatsbyImageData)}
@@ -157,10 +154,11 @@ I want to use the full range of digital tools I have at my hands and blend them 
         <ContentRow
           subtitle="agency website"
           title="excyted"
-          text="The era of digital technology is changing the types of products and services, the process of value creation and tools that enable us to to use and apply our own ideas and imagination.
-I want to use the full range of digital tools I have at my hands and blend them with my creativity to create great content for other peoples ideas, for start ups, businesses and my personal projects."
-          href="https://aboutnik.com/"
-          button="visit aboutnik"
+          text="I designed this website for the web agency excyted.
+I chose a dark theme with thin lines, dots and glow, a bold font poppins and an edgy look to create a digital technology mood through out the site.
+I then also developed the site from scratch with GatsbyJS and Contentful."
+          href="https://excyted.io/"
+          button="visit excyted"
           image={getImage(imageExcyted.childImageSharp.gatsbyImageData)}
           reverseMobile
           inside
@@ -168,10 +166,7 @@ I want to use the full range of digital tools I have at my hands and blend them 
         <ContentRow
           subtitle="my very own personal website"
           title="lukas hoppe"
-          text="The era of digital technology is changing the types of products and services, the process of value creation and tools that enable us to to use and apply our own ideas and imagination.
-I want to use the full range of digital tools I have at my hands and blend them with my creativity to create great content for other peoples ideas, for start ups, businesses and my personal projects."
-          href="https://aboutnik.com/"
-          button="visit aboutnik"
+          text="My own website is a reminder to the legible and harmonious use of white-space to create an effective and easy-to-use website. I designed it with Figma and developed it with GatsbyJS. On top of that I used to Contentful to manage my content. I also used framer-motion to include smooth animations."
           image={getImage(imageLh.childImageSharp.gatsbyImageData)}
           reverseMobile
           inside

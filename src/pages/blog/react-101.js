@@ -15,13 +15,14 @@ import BlogHead from "../../components/05-blog/BlogHead"
 import PremiumLink from "../../components/00-shared/PremiumLink"
 import BlogRow from "../../components/05-blog/BlogRow"
 import { BlogImage } from "../../components/05-blog/BlogImage"
-
+import Highlight from "react-highlight"
+import "highlight.js/styles/atelier-lakeside-dark.css"
 //Change from here on downwards
 //Use gatsby image component for images - Add inline prop if image inside column
 const BorrowPage = () => {
-  const { image1, image2 } = useStaticQuery(graphql`
+  const { imageTeam, imageInstagram } = useStaticQuery(graphql`
     query {
-      image1: file(relativePath: { eq: "borrow/image-borrow-hero.jpg" }) {
+      imageTeam: file(relativePath: { eq: "image-techlabs-team.jpg" }) {
         childImageSharp {
           gatsbyImageData(
             width: 1000
@@ -30,16 +31,9 @@ const BorrowPage = () => {
           )
         }
       }
-      image2: file(relativePath: { eq: "borrow/image-borrow-design.jpg" }) {
-        childImageSharp {
-          gatsbyImageData(
-            width: 1000
-            placeholder: BLURRED
-            formats: [AUTO, WEBP]
-          )
-        }
-      }
-      image3: file(relativePath: { eq: "borrow/image-borrow-code.jpg" }) {
+      imageInstagram: file(
+        relativePath: { eq: "image-techlabs-instagram.jpg" }
+      ) {
         childImageSharp {
           gatsbyImageData(
             width: 1000
@@ -60,138 +54,462 @@ const BorrowPage = () => {
       {/* change row inside */}
       <BlogRow>
         <Col small>
-          <h2>what it is about</h2>
+          <h2>react at techlabs</h2>
         </Col>
         <Col large>
           <p>
-            Last semester I was a mentor at the digital shaper programm of
-            TEchLabs that aims to equip young people with state-of-the-art tech
-            skills in the fields of data science, artificial intelligence, web
-            development and ux design.
+            Last semester I was a web development mentor for the digital shaper
+            programm of{" "}
+            <PremiumLink href="https://techlabs.org">TechLabs.</PremiumLink> The
+            program equips young people with state-of-the-art tech skills in the
+            fields of data science, artificial intelligence, web development and
+            ux design.
+          </p>
+          <p>
+            Groups of 4 - 6 students get assigned a mentor who helps them
+            navigating through the learning journey of 8 weeks online learning +
+            8 weeks project phase.
+          </p>
+        </Col>
+      </BlogRow>
+      <BlogRow>
+        <Col>
+          <BlogImage
+            image={getImage(imageTeam.childImageSharp.gatsbyImageData)}
+          />
+        </Col>
+        <Col>
+          <BlogImage
+            image={getImage(imageInstagram.childImageSharp.gatsbyImageData)}
+          />
+        </Col>
+      </BlogRow>
+      <BlogRow>
+        <Col small>
+          <h2>the team</h2>
+        </Col>
+        <Col large>
+          <p>
+            My team of 6 ux design and web development "techies" was super
+            motivated to learn the fundamentals of frontend web-development and
+            therefore quickly acquired the necessary HTML and CSS skills to then
+            get started with javascript and react.
           </p>
         </Col>
       </BlogRow>
       <BlogRow>
         <Col small>
-          <h2>product vision</h2>
+          <h2>the gameplan</h2>
         </Col>
         <Col large>
           <p>
-            Part one of the project consisted of a thorough design thinking
-            process and a product vision definition. The team ensured to come up
-            with a compelling idea statement that laid foundation for future
-            work:
+            My roadmap for getting the techies familiar with core concepts and
+            architectural structures of react looked the following:
+            <ul>
+              <li>
+                <strong>Folder structure: </strong> Learn how to set up and
+                structure a react project into components, utils, assets and
+                configuration files.
+              </li>
+              <li>
+                <strong>Component creation: </strong>
+                Learn how to create the building blocks of a react application
+                with functional components.
+              </li>
+              <li>
+                <strong>React state: </strong>
+                Understand component level state and get up and running with the
+                useState hook.
+              </li>
+              <li>
+                <strong>Controlled components:</strong>
+                Understand the difference between controlled and uncontrolled
+                components.
+              </li>
+              <li>
+                <strong>Lift state: </strong>
+                Lift and pass state across components to share state throughout
+                the app.
+              </li>
+              <li>
+                <strong>Local storage:</strong>
+                Learn how to utilize browsers local storage to add rapid
+                prototyping techniques to the project.
+              </li>
+            </ul>
+          </p>
+          <p>
+            Let's dive in, to see what we learned together over the course of 8
+            weeks:
+          </p>
+        </Col>
+      </BlogRow>
+      <BlogRow>
+        <Col small>
+          <h2>Folder structure</h2>
+        </Col>
+        <Col large>
+          <p>
+            Structuring my react projects has been something I neglected for a
+            long time as I was working mainly alone on my projects. Only with
+            increasing collaborative project work I understood the importance of
+            clean and well-structured react folder architecture for project
+            maintenance.
+          </p>
+          <p>
+            Together we learned, that every react-project has a{" "}
+            <strong>root</strong> a <strong>src</strong> and from there on a
+            folder structure that is highly unopinionated. <br />
+            Though, I shared what I think every react-project should be
+            structured at its very core, which namely are following folders:
+          </p>
+          <p>
+            <strong>Components:</strong> This folder holds all our functional
+            components. We could also subdivide this folder further into
+            stateful and stateless components.
+          </p>
+          <p>
+            <strong>Assets:</strong> This folder contains the tangible assets we
+            use in our application such as images, icons and json data. (I find
+            that for rapid prototyping its always good to have quick access to
+            some json mock data)
+          </p>
+          <p>
+            <strong>Utils:</strong> This folder holds all our utitities and
+            helper functions. These are little code snippets that help us
+            throughout our application.
+          </p>
+          <small>root</small>
+          <Highlight language="javascript">
+            {`- src
+--- assets
+----- images
+----- icons
+----- json
+--- components
+----- header
+----- footer
+----- button
+--- utils
+--- pages
+`}
+          </Highlight>
+          <p>
+            I was very happy that the rather basic session around structuring a
+            react application already sparked excitment in the team. It helped
+            the team to get up and running with the project and hence, empowered
+            and motiviated them to execute on the project even more.
           </p>
           <p className="quote">
-            "From the beginning of our ideation on, our shared mission was to
-            connect people with each other. But we wanted to underlay this
-            mission with a deeper purpose. So, we developed the idea of creating
-            an app that gives people the opportunity to share their stuff in the
-            easiest way possible, so that borrowing and lending items becomes
-            way more attractive than buying. We dream of a local community that
-            is founded on a sense of community and a willingness to share. This
-            approach is part of a circular economy and thereby supports
-            Tech4Good."
+            "Overwhelmed by our fast progress we presented our results to Lukas,
+            our mentor. Lukas was able to give us a lot of feedback and helped
+            us with the folder structure of the react app and with making our
+            code cleaner. He also introduced us to “live share” for VS code, so
+            that we were able to work together in one coding editor."
           </p>
+          <small>
+            <a href="https://inside-techlabs.medium.com/clubme-the-platform-that-brings-together-people-with-a-common-interest-d5b1d5791a80">
+              https://inside-techlabs.medium.com/clubme-the-platform-that-brings-together-people-with-a-common-interest-d5b1d5791a80
+            </a>
+          </small>
         </Col>
       </BlogRow>
       <BlogRow>
         <Col small>
-          <h2>design it</h2>
+          <h2>component creation</h2>
         </Col>
         <Col large>
           <p>
-            With the idea and the project name 'Borrow' set, the UX Team created
-            wireframes in Figma, set up an informational architecture, explored
-            color schemes and design concepts and ultimately came up with a
-            prototype. Together we iterated over the design and found
-            improvements.
+            Components are the building blocks of any react application. In the
+            TechLabs track we looked at how to create functional components,
+            split them into smaller ones and reuse them throughout the
+            application. We learned that each react component is a function that
+            accepts input in the form of objects passed as props and that each
+            function returns HTML.
           </p>
-          <BlogImage
-            inline
-            image={getImage(image2.childImageSharp.gatsbyImageData)}
-          />
+          <small>Registration.js</small>
+          <Highlight language="javascript">
+            {`const Registration = ({data}) => {
+const accountState = data.accountState;
+  return(
+    <h1>Registration page</h1>
+    ...
+  )
+}
+export default Registration;`}
+          </Highlight>
+          <small>some other component</small>
+          <Highlight language="javascript">
+            {`...
+<Route path='/registrieren'>
+  <Registration />
+</Route>
+...`}
+          </Highlight>
         </Col>
       </BlogRow>
       <BlogRow>
         <Col small>
-          <h2>tech handoff</h2>
+          <h2>react state</h2>
         </Col>
         <Col large>
           <p>
-            Before giving it to the project's development team we scratched the
-            surface of web development by doing some technical writing. We
-            translated the designs into pseudo code to make the transition into
-            development as smooth as possible.
+            Our next session was fully dedicated to addition of state to our
+            components and the understanding of how stateful logic makes and
+            breakes a react application. <br />
+            We used the useState hook and learned that it is no more than a
+            value pair that returns a state variable as well as a function which
+            updates our state whenever we call it. The component subsequently
+            re-renders everytime we mutate state.
           </p>
+          <Highlight language="javascript">
+            {`...
+const [show, setShow] = useState(false);
+
+handleShow = () => {
+  setShow(!show)
+}
+
+return(
+  <>
+    ...
+    {show && <Modal/>}
+    ...
+    <button onClick={handleShow}>See more</button>
+    ...
+  </>
+)
+...`}
+          </Highlight>
         </Col>
       </BlogRow>
       <BlogRow>
         <Col small>
-          <h2>the drawback</h2>
+          <h2>Controlled components</h2>
         </Col>
         <Col large>
           <p>
-            Unfortunately, the team encountered communication problems and
-            bottlenecks on the developer side. It led to the tough decision of
-            not developing the app itself, but reducing the project scope to the
-            development of a landing page which features the imaginary app.
-            Spinning up landing pages to talk to potential customers, track
-            traffic or gain investors attention on a product or idea is an
-            essential skill. TechLabs proves to be the perfect environment to
-            give it a try.
+            By default HTML form elements such as text inputs, checkboxes and
+            radio buttons manage their own internal state. In other words: We
+            can directly type in anything we want into our input fields without
+            giving our app specific instructions on what to do with the value of
+            the element we are targeting. Its a traditional HTML behaviour and
+            commonly referred to as uncontrolled components.
           </p>
+          <small>uncontrolled component</small>
+          <Highlight language="javascript">
+            {`...
+return(
+  <>
+    ...
+    <input
+      type='text'
+      name='name'
+    />
+    ...
+  </>
+)
+...`}
+          </Highlight>
+          <p>
+            Instead of letting the DOM manage the state of its nodes we learned
+            how to control our UI component with its very own state. We did this
+            by utilising reacts props and callbacks such as onChange. The
+            onChange event handler fires a function handleChange which then
+            handles the state change. We now have full control over our
+            components state.
+          </p>
+          <small>controlled component</small>
+          <Highlight language="javascript">
+            {`...
+const [value, setValue] = useState({
+  name: '',
+  description: '',
+  mail: '',
+  adress: '',
+});
+
+const handleChange = (e) => {
+  setValue({ ...value, [e.target.name]: e.target.value });
+};
+
+...
+
+return(
+  <>
+    ...
+    <input
+      type='text'
+      name='name'
+      value={value.name}
+      onChange={handleChange}
+    />
+    ...
+  </>
+)
+...`}
+          </Highlight>
         </Col>
       </BlogRow>
       <BlogRow>
         <Col small>
-          <h2>macro-structure it</h2>
+          <h2>Lifting state up</h2>
         </Col>
         <Col large>
           <p>
-            After aggreeing on the modified roadmap, we outlined the structure
-            of the page and roughly structured it into several sections:
+            With further development of our little web-application the group
+            came across the issue of not being able to use state from one
+            component in another component. It was time to lift state up!
+          </p>
+          <p>
+            Sharing stateful logic horizontally across the component tree can be
+            done by removing local state from child components and letting its
+            common parent component take care of it. The parent component can
+            then pass the state down to its children via props. As the child
+            component lost control over its local state accordingly, we also
+            pass down a handleChange function that gets called within the child
+            but updates state in the parent.
+          </p>
+          <small>parent component</small>
+          <Highlight language="javascript">
+            {`...
+const [value, setValue] = useState({
+  name: '',
+  description: '',
+  mail: '',
+  adress: '',
+});
+const handleChange = (e) => {
+  setValue({ ...value, [e.target.name]: e.target.value });
+};
+
+return(
+  <Form
+    value={value}
+    handleChange={handleChange}
+  />
+)
+...`}
+          </Highlight>
+          <small>child component</small>
+          <Highlight language="javascript">
+            {`...
+const Form = ({ value, handleChange }) => {
+  return(
+    <>
+      ...
+        <input
+        type='text'
+        name='name'
+        value={value.name}
+        onChange={handleChange}
+        />
+      ...
+    </>
+  )
+}
+...`}
+          </Highlight>
+        </Col>
+      </BlogRow>
+      <BlogRow>
+        <Col small>
+          <h2>Local storage</h2>
+        </Col>
+        <Col large>
+          <p>
+            After I heard of local storage as a react newbie for the first time
+            I thought this would be super far away. How could my application be
+            able to access my browser and then store data in there?
+          </p>
+          <p>
+            Turns out that this is actually a pretty simple two-step concept of
             <ul>
-              <li>Hero Section (Emotional - Talk to the customer)</li>
-              <li>Feature Showcase(Contextual - Show the key benefits)</li>
-              <li>How To Section (Functional - Show how it works)</li>
-              <li>Testimonial (Validate - "Others are already using it!")</li>
-              <li>Team (Technical - Support product with strong team)</li>
-              <li>CTA (CTA: Actionable - "Get started now!")</li>
-            </ul>{" "}
-            We made sure to get the macro view first. After that the UX design
-            team went ahead and created the high fidelity design including real
-            product mock ups.
+              <li>
+                saving data via <strong>localStorage.setItem()</strong>
+              </li>
+              <li>
+                and then retrieving (getting) it via{" "}
+                <strong>localStorage.getItem()</strong>
+              </li>
+            </ul>
+            I thought it would be super cool to teach localStorage in a TechLabs
+            project as it allows the team to build more sophisticated prototypes
+            in a quick and easy way.
           </p>
+          <p>
+            Our goal was to use form data in another component. With already
+            having acquired the skills of using, lifting and controlling state,
+            the group had no problems setting up the form itself and storing its
+            input as an object in the forms state.{" "}
+          </p>
+          <p>
+            We then learned to call the setItem method on a form submit. Because
+            the web storage API only stores key value pairs as strings we also
+            had to stringify the form object.
+          </p>
+          <small>form component</small>
+          <Highlight language="javascript">
+            {`...
+const [value, setValue] = useState({
+  name: '',
+  description: '',
+  mail: '',
+  adress: '',
+});
+
+const handleSubmit = () => {
+  localStorage.setItem('value', JSON.stringify(value));
+};
+
+return(
+  <>
+    ...
+    <button onClick={handleSubmit}>Register</button>
+    ...
+  </>
+)
+...`}
+          </Highlight>
+          <p>
+            In the component where we wanted to have the data, we used the{" "}
+            <strong>useEffect</strong> hook. It helps us to invoke the fetching
+            of our storage items on inital page render and fetch our stored
+            items by calling getItem. We additionally had to parse the string to
+            convert it back into a javascript object.{" "}
+          </p>
+          <small>other component</small>
+          <Highlight language="javascript">
+            {`...
+const [value, setValue] = useState(null);
+
+useEffect(() => {
+  setValue(JSON.parse(localStorage.getItem('value')));
+}, []);
+
+return(
+  <>
+    ...
+    <h1>{value && value.name}</h1>
+    ...
+  </>
+)
+...`}
+          </Highlight>
         </Col>
       </BlogRow>
       <BlogRow>
         <Col small>
-          <h2>real code</h2>
+          <h2>conclusion</h2>
         </Col>
         <Col large>
           <p>
-            On the development side with a scarce resource of 1,5 developers we
-            then took the design and translated it into real code. Using
-            GatsbyJS and SCSS we were able to quickly build the architecture and
-            style the website. We used netlifys github integration to host the
-            static website and modify continuously only by executing git push.
-          </p>
-          <BlogImage
-            inline
-            image={getImage(image2.childImageSharp.gatsbyImageData)}
-          />
-          <p>
-            The result is up and running at{" "}
-            <PremiumLink href="https://getborrow.netlify.app/">
-              getborrow.netlify.app
-            </PremiumLink>
-            . Anika and Lina from the UX team also issued{" "}
-            <PremiumLink href="https://inside-techlabs.medium.com/the-borrow-app-d938d9d2da72">
-              an article
-            </PremiumLink>{" "}
-            about the product development phase on medium . Make sure to check
-            it out!
+            Getting the basics right early on is important to build robust
+            things with react. While there are many more practices to master, I
+            personally think that these 6 concepts provide a good starting point
+            to understand what react is capable of. In my opinion react has a
+            smooth learning curve in general and can be a soft gateway into the
+            world of javascript.
           </p>
         </Col>
       </BlogRow>

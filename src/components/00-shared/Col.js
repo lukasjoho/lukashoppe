@@ -19,14 +19,17 @@ const StyledCol = styled.div`
     &.large {
       width: 60%;
     }
+    &.full {
+      width: 100%;
+    }
   }
 `
 
-const Col = ({ children, center, small, large }) => {
+const Col = ({ children, center, small, large, full }) => {
   return (
     <StyledCol
       center={center}
-      className={(small && "small") || (large && "large")}
+      className={(small && "small") || (large && "large") || (full && "full")}
     >
       {children}
     </StyledCol>

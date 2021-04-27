@@ -19,7 +19,7 @@ import { BlogImage } from "../../components/05-blog/BlogImage"
 //Change from here on downwards
 //Use gatsby image component for images - Add inline prop if image inside column
 const BorrowPage = () => {
-  const { image1, image2 } = useStaticQuery(graphql`
+  const { image1, image2, image3 } = useStaticQuery(graphql`
     query {
       image1: file(relativePath: { eq: "borrow/image-borrow-hero.jpg" }) {
         childImageSharp {
@@ -55,13 +55,12 @@ const BorrowPage = () => {
       {/* change bloghead  */}
       <BlogHead
         title="borrow"
-        subtitle="a techlabs project"
         tags={["project work", "web development", "UX"]}
       />
       {/* change row inside */}
       <BlogRow>
         <Col small>
-          <h2>what it is about</h2>
+          <h2>a techlabs project</h2>
         </Col>
         <Col large>
           <p>
@@ -106,6 +105,11 @@ const BorrowPage = () => {
             approach is part of a circular economy and thereby supports
             Tech4Good."
           </p>
+          <small>
+            <a href="https://inside-techlabs.medium.com/the-borrow-app-d938d9d2da72">
+              https://inside-techlabs.medium.com/the-borrow-app-d938d9d2da72
+            </a>
+          </small>
         </Col>
       </BlogRow>
       <BlogRow>
@@ -192,7 +196,7 @@ const BorrowPage = () => {
           </p>
           <BlogImage
             inline
-            image={getImage(image2.childImageSharp.gatsbyImageData)}
+            image={getImage(image3.childImageSharp.gatsbyImageData)}
           />
           <p>
             The result is up and running at{" "}

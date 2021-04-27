@@ -1,6 +1,8 @@
 import React from "react"
 import styled from "styled-components"
 import Breakpoint from "src/components/00-shared/_breakpoints.js"
+import { Link } from "gatsby"
+
 const StyledButton = styled.button`
   background: ${props => props.theme.colors.dark};
   color: ${props => props.theme.colors.bright};
@@ -24,7 +26,7 @@ const StyledLink = styled.a`
     align-self: flex-start;
   }
 `
-const Button = ({ text, href, handleToggle }) => {
+const Button = ({ text, href, handleToggle, link }) => {
   return (
     <>
       {handleToggle && (
@@ -34,6 +36,11 @@ const Button = ({ text, href, handleToggle }) => {
         <StyledLink href={href} target="_blank">
           <StyledButton>{text}</StyledButton>
         </StyledLink>
+      )}
+      {link && (
+        <Link to={link}>
+          <StyledButton>{text}</StyledButton>
+        </Link>
       )}
     </>
   )

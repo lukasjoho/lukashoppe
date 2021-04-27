@@ -44,6 +44,7 @@ const ContentRow = ({
   href,
   inside,
   subtitle,
+  link,
 }) => {
   return (
     <StyledContentRow>
@@ -53,7 +54,7 @@ const ContentRow = ({
           {title && <h2>{title}</h2>}
           {inside && <GatsbyImage image={image} className="inside" />}
           <p>{text}</p>
-          <Button text={button} href={href} />
+          <Button link={link} text={button} href={href} />
         </Col>
         <Col center={center}>
           <GatsbyImage image={image} className={inside && "outside"} />

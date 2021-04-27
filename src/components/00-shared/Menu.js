@@ -245,6 +245,7 @@ const Menu = ({ isOpen, handleToggle }) => {
             dropdown={[
               ["react 101", "/blog/react-101"],
               ["borrow", "/blog/borrow"],
+              ["prototyping", "/blog/prototyping"],
             ]}
             itemkey="blog"
             index={index}
