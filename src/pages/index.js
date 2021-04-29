@@ -8,11 +8,11 @@ import Row from "../components/00-shared/Row"
 //page specific components
 import FullPage from "../components/00-shared/FullPage"
 import Image from "../components/01-home/Image"
-
+import SEO from "src/components/00-shared/Seo.js"
 import PremiumLink from "../components/00-shared/PremiumLink"
 import styled from "styled-components"
 import Button from "src/components/00-shared/Button"
-
+import { graphql, useStaticQuery } from "gatsby"
 import Breakpoint from "src/components/00-shared/_breakpoints.js"
 
 const StyledTextblock = styled.div`
@@ -36,8 +36,27 @@ const StyledTextblock = styled.div`
   }
 `
 const IndexPage = ({ handleToggle }) => {
+  const { imageSeo } = useStaticQuery(graphql`
+    query {
+      imageSeo: file(relativePath: { eq: "image-seo.jpg" }) {
+        childImageSharp {
+          fixed(width: 1200, quality: 90) {
+            src
+          }
+        }
+      }
+    }
+  `)
   return (
     <>
+      <SEO
+        title="lukas | i like to build"
+        description="Currently, I am exploring the world of product management.
+Before that, I worked as a web developer and designer.
+I like to capture moments through photography."
+        image={imageSeo.childImageSharp.fixed.src}
+        url="lukashoppe.netlify.app"
+      />
       <FullPage auto>
         <Container auto>
           <Image />
@@ -48,7 +67,7 @@ const IndexPage = ({ handleToggle }) => {
             </h1>
             <p>
               Currently, I am exploring the world of product management. <br />
-              Before that, I worked as a web developer and designer.
+              Before that, I worked as a web developer and ux designer.
               <br />I like to capture moments through photography. <br />
               Say hello at{" "}
               <PremiumLink href="mailto:mail@lukashoppe.com">
