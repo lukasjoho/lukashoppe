@@ -3,7 +3,7 @@ import styled from "styled-components"
 import Breakpoint from "src/components/00-shared/_breakpoints.js"
 
 const StyledTagline = styled.div`
-  padding: 0rem 0 8rem;
+  padding: 0rem 0 6rem;
   width: 100%;
   @media ${Breakpoint.lg} {
     padding: 4rem 0 12rem;
