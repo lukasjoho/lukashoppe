@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useLayoutEffect } from "react"
 import FullPage from "../components/00-shared/FullPage"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { graphql } from "gatsby"
@@ -18,6 +18,9 @@ import "swiper/components/pagination/pagination.scss"
 import "swiper/components/scrollbar/scrollbar.scss"
 import "../components/00-shared/swiper.css"
 import { motion, AnimatePresence } from "framer-motion"
+import ImagePlaceholder from "../images/product/image-bonvelo.jpg"
+import Breakpoint from "src/components/00-shared/_breakpoints.js"
+
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Mousewheel, Keyboard])
 
 const Container = styled.div`
@@ -26,13 +29,19 @@ const Container = styled.div`
   height: 100%;
 `
 const StyledImage = styled(motion.div)`
-  background: violet;
   width: 100%;
-  height: ${props =>
-    `calc(100vh - 2*${props.theme.spacing.layout.desktop}rem)`};
-  img {
+
+  background: grey;
+
+  @media ${Breakpoint.lg} {
     height: ${props =>
       `calc(100vh - 2*${props.theme.spacing.layout.desktop}rem)`};
+  }
+  img {
+    @media ${Breakpoint.lg} {
+      height: ${props =>
+        `calc(100vh - 2*${props.theme.spacing.layout.desktop}rem)`};
+    }
     width: auto;
   }
 `
@@ -63,23 +72,32 @@ const variants = {
   visible: { x: 0, opacity: 1 },
 }
 const Gallery = props => {
+  useLayoutEffect(() => {
+    return console.log()
+  }, [])
   return (
     <FullPage>
       <Container>
         <Swiper
           spaceBetween={20}
+          direction="horizontal"
           slidesPerView="auto"
-          navigation
-          centeredSlides={true}
+          observer={true}
+          observeParents={true}
+          loop={false}
+          centeredSlides={false}
           pagination={{ clickable: true }}
           mousewheelControl={true}
-          onSlideChange={() => console.log("slide change")}
-          onSwiper={swiper => console.log(swiper)}
+          // onSlideChange={swiper => swiper.slideTo(0)}
+          onSwiper={swiper => swiper.setProgress(-0)}
           mousewheel={true}
           grabCursor={true}
           keyboard={{
             enabled: true,
           }}
+          preloadImages={true}
+          preloadImages={true}
+          updateOnImagesReady={true}
         >
           <AnimatePresence>
             <SwiperSlide>
@@ -90,8 +108,6 @@ const Gallery = props => {
                 transition={{ duration: 1 }}
               >
                 <StyledImage>
-                  {/* <img src={props.data.contentfulGallery.cover.file.url} alt="" /> */}
-
                   <GatsbyImage
                     image={getImage(
                       props.data.contentfulGallery.cover.gatsbyImageData
