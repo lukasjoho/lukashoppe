@@ -82,12 +82,6 @@ const LinkItem = ({ href, icon, icondark, iconbright, isOpen }) => {
 const Footer = ({ isOpen }) => (
   <StyledFooter>
     <Ul>
-      {/* <a href="mailto:mail@lukashoppe.com">
-        <li>
-          <img src={Icon1} />
-          <img src={Icon1Dark} />
-        </li>
-      </a> */}
       <LinkItem
         href="mailto:mail@lukashoppe.com"
         isOpen={isOpen}
