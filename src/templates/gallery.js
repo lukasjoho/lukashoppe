@@ -29,20 +29,23 @@ const Container = styled.div`
   height: 100%;
 `
 const StyledImage = styled(motion.div)`
-  width: 100%;
-
+  width: 100vw;
+  font-size: 0;
   background: grey;
 
   @media ${Breakpoint.lg} {
+    width: 100%;
+
     height: ${props =>
       `calc(100vh - 2*${props.theme.spacing.layout.desktop}rem)`};
   }
   img {
+    width: 100%;
     @media ${Breakpoint.lg} {
       height: ${props =>
         `calc(100vh - 2*${props.theme.spacing.layout.desktop}rem)`};
+      width: auto;
     }
-    width: auto;
   }
 `
 export const query = graphql`
