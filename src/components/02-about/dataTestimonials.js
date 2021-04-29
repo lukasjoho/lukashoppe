@@ -27,14 +27,7 @@ export const data = [
     author: "Niklas",
   },
   {
-    text: `Ohhhhhhhh Lukas!!!!
-Wie geil.
-Wir saßen ganz gebannt vor dem PC.
-Ich bin schon ganz hibbelig ihn öffentlich zu machen....😍😍😍
-Wann machen wir das???
-Soooooooo geil. 👍👍👍
-
-Danke Lukas!!!!! Danke. 👏`,
+    text: `Ohhhhhhhh Lukas!!!! Wie geil. Wir saßen ganz gebannt vor dem PC. Ich bin schon ganz hibbelig ihn öffentlich zu machen....😍😍😍 Wann machen wir das??? Soooooooo geil. 👍👍👍 Danke Lukas!!!!! Danke. 👏`,
     author: "Anne Rumpel - Cablepark Norderstedt",
   },
   {
