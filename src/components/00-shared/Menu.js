@@ -23,7 +23,10 @@ const StyledMenu = styled(motion.div)`
   font-family: "Oswald";
   font-weight: 700;
   letter-spacing: 0.05rem;
-
+  min-height: 600px;
+  @media ${Breakpoint.lg} {
+    min-height: 800px;
+  }
   Footer {
     position: absolute;
     bottom: 0;
@@ -39,9 +42,9 @@ const Nav = styled.nav`
     li {
       text-align: center;
       color: ${props => props.theme.colors.middlegrey};
-      font-size: 4rem;
+      font-size: 3rem;
       font-weight: 700;
-      line-height: 8rem;
+      line-height: 6rem;
       span {
         transition: 0.3s ease;
         pointer-events: none;
@@ -57,21 +60,30 @@ const Nav = styled.nav`
       }
 
       @media ${Breakpoint.lg} {
-        font-size: 6rem;
+        font-size: 4rem;
         font-weight: 700;
-        line-height: 12rem;
+        line-height: 8rem;
+      }
+      @media ${Breakpoint.xl} {
+        font-size: 4.5rem;
+        font-weight: 700;
+        line-height: 9rem;
       }
       cursor: pointer;
       .sublist {
         padding: 0;
         list-style-type: none;
         li {
-          font-size: 2rem;
-          line-height: 5rem;
+          font-size: 1.8rem;
+          line-height: 4rem;
           cursor: pointer;
           @media ${Breakpoint.lg} {
-            font-size: 2.5rem;
-            line-height: 6rem;
+            font-size: 2rem;
+            line-height: 4.5rem;
+          }
+          @media ${Breakpoint.xl} {
+            font-size: 2.2rem;
+            line-height: 5rem;
           }
         }
       }
