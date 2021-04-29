@@ -29,7 +29,7 @@ const Image = props => {
       image: file(relativePath: { eq: "image-lukas.jpg" }) {
         childImageSharp {
           gatsbyImageData(
-            width: 1000
+            width: 400
             placeholder: BLURRED
             formats: [AUTO, WEBP]
           )
