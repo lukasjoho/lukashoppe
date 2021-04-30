@@ -24,6 +24,7 @@ const ProductPage = () => {
     imageSustragil,
     imageNewschool,
     imageLh,
+    imageBorrow,
   } = useStaticQuery(graphql`
     query {
       imageBonvelo: file(relativePath: { eq: "product/image-bonvelo.jpg" }) {
@@ -83,6 +84,15 @@ const ProductPage = () => {
         }
       }
       imageLh: file(relativePath: { eq: "product/image-lh.jpg" }) {
+        childImageSharp {
+          gatsbyImageData(
+            width: 1000
+            placeholder: BLURRED
+            formats: [AUTO, WEBP]
+          )
+        }
+      }
+      imageBorrow: file(relativePath: { eq: "product/image-borrow.jpg" }) {
         childImageSharp {
           gatsbyImageData(
             width: 1000
@@ -168,6 +178,16 @@ I then also developed the site from scratch with GatsbyJS and Contentful."
           title="lukas hoppe"
           text="My own website is a reminder to the legible and harmonious use of white-space to create an effective and easy-to-use website. I designed it with Figma and developed it with GatsbyJS. On top of that I used to Contentful to manage my content. I also used framer-motion to include smooth animations."
           image={getImage(imageLh.childImageSharp.gatsbyImageData)}
+          reverseMobile
+          inside
+        />
+        <ContentRow
+          subtitle="a techlabs project"
+          title="borrow app"
+          text="As a web development mentor I supported a group of learners in the TechLabs coding program in designing and developing their first app and landing page."
+          image={getImage(imageBorrow.childImageSharp.gatsbyImageData)}
+          link="/blog/borrow"
+          button="see more"
           reverseMobile
           inside
         />
