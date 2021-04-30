@@ -1,6 +1,6 @@
 //dependencies
 import * as React from "react"
-
+import { useContext, useState } from "react"
 //general components
 
 import Container from "../components/00-shared/Container"
@@ -47,6 +47,7 @@ const IndexPage = ({ handleToggle }) => {
       }
     }
   `)
+
   return (
     <>
       <SEO

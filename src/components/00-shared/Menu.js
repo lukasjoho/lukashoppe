@@ -42,9 +42,9 @@ const Nav = styled.nav`
     li {
       text-align: center;
       color: ${props => props.theme.colors.middlegrey};
-      font-size: 3rem;
+      font-size: 3.2rem;
       font-weight: 700;
-      line-height: 6rem;
+      line-height: 6.4rem;
       span {
         transition: 0.3s ease;
         pointer-events: none;
@@ -74,8 +74,8 @@ const Nav = styled.nav`
         padding: 0;
         list-style-type: none;
         li {
-          font-size: 1.8rem;
-          line-height: 4rem;
+          font-size: 2rem;
+          line-height: 4.4rem;
           cursor: pointer;
           @media ${Breakpoint.lg} {
             font-size: 2rem;

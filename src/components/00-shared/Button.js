@@ -27,7 +27,7 @@ const StyledLink = styled.a`
     align-self: flex-start;
   }
 `
-const Button = ({ text, href, handleToggle, link }) => {
+const Button = ({ text, href, handleToggle, link, overlay, event }) => {
   return (
     <>
       {handleToggle && (
@@ -43,6 +43,7 @@ const Button = ({ text, href, handleToggle, link }) => {
           <StyledButton>{text}</StyledButton>
         </Link>
       )}
+      {overlay && <StyledButton onClick={event}>{text}</StyledButton>}
     </>
   )
 }
