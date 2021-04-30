@@ -51,7 +51,7 @@ const IndexPage = ({ handleToggle }) => {
   return (
     <>
       <SEO
-        title="lukas | i like to build"
+        title="i like to build"
         description="Currently, I am exploring the world of product management.
 Before that, I worked as a web developer and designer.
 I like to capture moments through photography."

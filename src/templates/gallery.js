@@ -38,7 +38,7 @@ const StyledOverlay = styled(motion.div)`
   top: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(26, 26, 26, 0.9);
+  background: rgba(26, 26, 26, 0.8);
   z-index: 999;
   display: flex;
   justify-content: center;
@@ -48,6 +48,9 @@ const StyledOverlay = styled(motion.div)`
     display: inline-flex;
     flex-direction: column;
     padding: 4rem;
+    .rotate {
+      transform: rotate(90deg);
+    }
     h2 {
       text-align: center;
     }
@@ -125,22 +128,33 @@ const Gallery = props => {
   const isDesktop = windowWidth >= lg
   const [context, setContext] = useContext(Context)
   useEffect(() => {
-    setTimeout(() => setContext(true), 1500)
+    setTimeout(
+      () =>
+        setContext({
+          ...context,
+          timed: true,
+        }),
+      1500
+    )
   }, [])
-  console.log("context", context)
+  console.log("context inital", context)
   const handleOverlay = () => {
-    setContext(false)
+    setContext({
+      ...context,
+      initial: false,
+    })
+    console.log("context clicked", context)
   }
 
   return (
     <FullPage>
       <AnimatePresence>
-        {isDesktop && context && (
+        {isDesktop && context.timed && context.initial && (
           <StyledOverlay
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ delay: 0, duration: 1 }}
+            transition={{ delay: 0, duration: 0.8 }}
           >
             <div className="content">
               <h2>
@@ -156,7 +170,7 @@ const Gallery = props => {
                   <p>scroll vertically</p>
                 </li>
                 <li>
-                  <img src={IconScroll}></img>
+                  <img className="rotate" src={IconScroll}></img>
                   <p>scroll horizontally</p>
                 </li>
               </ul>

@@ -19,7 +19,7 @@ const StyledLayout = styled.div`
 `
 
 const Layout = ({ children }) => {
-  const [context, setContext] = useState(false)
+  const [context, setContext] = useState({ initial: true, timed: false })
   const [isOpen, setIsOpen] = useState(false)
   const [isPaused, setIsPaused] = useState(false)
   const handleToggle = () => {
