@@ -1,6 +1,10 @@
 const path = require("path")
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
+  // if (page.path.match(/photos\/./)) {
+  //   page.context.layout = "special"
+  //   createPage(page)
+  // }
   const response = await graphql(`
     query {
       allContentfulGallery {
@@ -25,6 +29,7 @@ exports.createPages = async ({ graphql, actions }) => {
       component: path.resolve("./src/templates/gallery.js"),
       context: {
         slug: edge.node.slug,
+        layout: "special",
       },
     })
   })

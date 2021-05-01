@@ -1,6 +1,6 @@
 //dependencies
 import * as React from "react"
-
+import { useContext } from "react"
 //general components
 
 import Container from "../components/00-shared/Container"
@@ -14,6 +14,7 @@ import Breakpoint from "src/components/00-shared/_breakpoints.js"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import styled from "styled-components"
+import { Context } from "src/utils/Context.js"
 const MasonryItem = styled.div`
   position: relative;
   background: grey;
@@ -97,6 +98,11 @@ const breakpointColumnsObj = {
   960: 2,
 }
 const PhotosPage = () => {
+  const [context, setContext] = useContext(Context)
+
+  const handleGalleryClick = () => {
+    setContext({ ...context, visited: true })
+  }
   const data = useStaticQuery(
     graphql`
       query {
@@ -136,7 +142,7 @@ I connect to the people I shoot."
         >
           {data.allContentfulGallery.edges.map(edge => {
             return (
-              <MasonryItem key={edge.node.id}>
+              <MasonryItem key={edge.node.id} onClick={handleGalleryClick}>
                 <Link to={`/photos/${edge.node.slug}`}>
                   <GatsbyImage
                     image={getImage(edge.node.cover.gatsbyImageData)}

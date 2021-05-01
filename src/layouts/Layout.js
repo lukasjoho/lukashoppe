@@ -18,8 +18,13 @@ const StyledLayout = styled.div`
   }
 `
 
-const Layout = ({ children }) => {
-  const [context, setContext] = useState({ initial: true, timed: false })
+const Layout = ({ children, pageContext }) => {
+  const [context, setContext] = useState({
+    initial: true,
+    timed: false,
+    gallery: false,
+    visited: false,
+  })
   const [isOpen, setIsOpen] = useState(false)
   const [isPaused, setIsPaused] = useState(false)
   const handleToggle = () => {
@@ -55,7 +60,11 @@ const Layout = ({ children }) => {
           {React.cloneElement(children, {
             handleToggle: handleToggle,
           })}
-          <Footer isOpen={isOpen} />
+          <Footer
+            isOpen={isOpen}
+            blocks={pageContext.layout}
+            visited={context.visited}
+          />
         </StyledLayout>
         <AnimatePresence exitBeforeEnter>
           {isOpen && <Menu isOpen={isOpen} handleToggle={handleToggle} />}

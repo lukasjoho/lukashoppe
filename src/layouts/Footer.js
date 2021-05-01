@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState, useContext } from "react"
 import styled from "styled-components"
 import Icon1 from "../images/icons/icon-mail.svg"
 import Icon1Dark from "../images/icons/icon-mail-dark.svg"
@@ -16,7 +16,9 @@ import Icon5 from "../images/icons/icon-github.svg"
 import Icon5Dark from "../images/icons/icon-github-dark.svg"
 import Icon5Bright from "../images/icons/icon-github-bright.svg"
 import Breakpoint from "src/components/00-shared/_breakpoints.js"
-
+import IconBlocks from "src/images/icons/icon-blocks.svg"
+import { Context } from "src/utils/Context.js"
+import { Link } from "gatsby"
 const StyledFooter = styled.footer`
   height: ${props => `${props.theme.spacing.layout.mobile}rem`};
   width: 100%;
@@ -31,6 +33,31 @@ const StyledFooter = styled.footer`
   p {
     line-height: 1;
     font-size: 1.4rem;
+  }
+`
+
+const StyledBlocks = styled.div`
+  height: 3rem;
+  font-size: 0;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  img {
+    height: 100%;
+    transition: 0.3s ease;
+    &:hover {
+      filter: brightness(200%);
+    }
+    &:last-child {
+      position: absolute;
+      left: 0;
+      top: calc(3rem - 1px);
+    }
+  }
+  &:hover {
+    img {
+      transform: translateY(-100%);
+    }
   }
 `
 const Ul = styled.ul`
@@ -68,8 +95,6 @@ const Ul = styled.ul`
   }
 `
 const LinkItem = ({ href, icon, icondark, iconbright, isOpen }) => {
-  console.log("isOpen", isOpen)
-  console.log("spacing")
   return (
     <a href={href} target="_blank">
       <li>
@@ -79,54 +104,74 @@ const LinkItem = ({ href, icon, icondark, iconbright, isOpen }) => {
     </a>
   )
 }
-const Footer = ({ isOpen }) => (
-  <StyledFooter>
-    <Ul>
-      <LinkItem
-        href="mailto:mail@lukashoppe.com"
-        isOpen={isOpen}
-        icon={Icon1}
-        iconbright={Icon1Bright}
-        icondark={Icon1Dark}
-      />
+const Footer = ({ isOpen, blocks }) => {
+  const [context, setContext] = useContext(Context)
+  console.log("Context visited: ", context.visited)
+  return (
+    <StyledFooter>
+      {!blocks && (
+        <Ul>
+          <LinkItem
+            href="mailto:mail@lukashoppe.com"
+            isOpen={isOpen}
+            icon={Icon1}
+            iconbright={Icon1Bright}
+            icondark={Icon1Dark}
+          />
 
-      <span />
-      <LinkItem
-        href="https://www.linkedin.com/in/lukashoppe/"
-        isOpen={isOpen}
-        icon={Icon2}
-        iconbright={Icon2Bright}
-        icondark={Icon2Dark}
-      />
+          <span />
+          <LinkItem
+            href="https://www.linkedin.com/in/lukashoppe/"
+            isOpen={isOpen}
+            icon={Icon2}
+            iconbright={Icon2Bright}
+            icondark={Icon2Dark}
+          />
 
-      <span />
-      <LinkItem
-        href="https://dribbble.com/lukasjoho"
-        isOpen={isOpen}
-        icon={Icon3}
-        iconbright={Icon3Bright}
-        icondark={Icon3Dark}
-      />
+          <span />
+          <LinkItem
+            href="https://dribbble.com/lukasjoho"
+            isOpen={isOpen}
+            icon={Icon3}
+            iconbright={Icon3Bright}
+            icondark={Icon3Dark}
+          />
 
-      <span />
-      <LinkItem
-        href="https://github.com/lukasjoho"
-        isOpen={isOpen}
-        icon={Icon5}
-        iconbright={Icon5Bright}
-        icondark={Icon5Dark}
-      />
+          <span />
+          <LinkItem
+            href="https://github.com/lukasjoho"
+            isOpen={isOpen}
+            icon={Icon5}
+            iconbright={Icon5Bright}
+            icondark={Icon5Dark}
+          />
 
-      <span />
-      <LinkItem
-        href="https://www.youtube.com/channel/UCSePudpZ9upO0exjh9uuh9w"
-        isOpen={isOpen}
-        icon={Icon4}
-        iconbright={Icon4Bright}
-        icondark={Icon4Dark}
-      />
-    </Ul>
-  </StyledFooter>
-)
+          <span />
+          <LinkItem
+            href="https://www.youtube.com/channel/UCSePudpZ9upO0exjh9uuh9w"
+            isOpen={isOpen}
+            icon={Icon4}
+            iconbright={Icon4Bright}
+            icondark={Icon4Dark}
+          />
+        </Ul>
+      )}
+      {blocks && context.visited && (
+        <StyledBlocks onClick={() => window.history.back()}>
+          <img src={IconBlocks} alt="" />
+          <img src={IconBlocks} alt="" />
+        </StyledBlocks>
+      )}
+      {blocks && !context.visited && (
+        <Link to="/photos">
+          <StyledBlocks>
+            <img src={IconBlocks} alt="" />
+            <img src={IconBlocks} alt="" />
+          </StyledBlocks>
+        </Link>
+      )}
+    </StyledFooter>
+  )
+}
 
 export default Footer
