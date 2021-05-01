@@ -14,6 +14,7 @@ const StyledButton = styled.button`
   width: 100%;
   cursor: pointer;
   outline: none;
+  transition: 0.15s ease;
   &:hover {
     filter: brightness(200%);
   }
