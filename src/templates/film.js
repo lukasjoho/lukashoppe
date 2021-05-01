@@ -13,6 +13,7 @@ export const query = graphql`
       title
       category
       youtube
+
       instagram
       video {
         file {
@@ -57,6 +58,9 @@ const StyledBack = styled.div`
   font-weight: 300;
   transition: 0.3s ease;
   position: relative;
+  p {
+    margin: 0;
+  }
   .dark,
   .default {
     transition: 0.3s ease;
@@ -115,6 +119,20 @@ const Youtube = ({ link }) => {
   return (
     <StyledYoutube>
       <iframe
+        src={link}
+        width="100%"
+        height="100%"
+        frameborder="0"
+        allow="autoplay; fullscreen; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    </StyledYoutube>
+  )
+}
+const Vimeo = ({ link }) => {
+  return (
+    <StyledYoutube>
+      <iframe
         width="100%"
         height="100%"
         src={link}
@@ -139,6 +157,9 @@ const Film = props => {
           {props.data.contentfulFilm.youtube && (
             <Youtube link={props.data.contentfulFilm.youtube} />
           )}
+          {/* {props.data.contentfulFilm.vimeo && (
+            <Vimeo link={props.data.contentfulFilm.vimeo} />
+          )} */}
           {props.data.contentfulFilm.instagram && (
             <>
               <StyledInstagram>
@@ -176,7 +197,7 @@ const Film = props => {
             <StyledBack>
               <img className="default" src={IconArrow} alt="" height="16px" />
               <img className="dark" src={IconArrowDark} alt="" height="16px" />
-              Back To All
+              <p>Back To All</p>
             </StyledBack>
           </Link>
         </StyledFilm>
