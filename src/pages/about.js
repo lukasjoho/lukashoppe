@@ -21,12 +21,13 @@ import PremiumLink from "../components/00-shared/PremiumLink"
 const AboutPage = () => {
   const { image1, image2, image3 } = useStaticQuery(graphql`
     query {
-      image2: file(relativePath: { eq: "about/image-lukas-erzaehlt.jpg" }) {
+      image2: file(relativePath: { eq: "about/image-usa.jpg" }) {
         childImageSharp {
           gatsbyImageData(
             width: 1000
             placeholder: BLURRED
             formats: [AUTO, WEBP]
+            quality: 90
           )
         }
       }
@@ -36,6 +37,7 @@ const AboutPage = () => {
             width: 1000
             placeholder: BLURRED
             formats: [AUTO, WEBP]
+            quality: 90
           )
         }
       }
@@ -45,6 +47,7 @@ const AboutPage = () => {
             width: 1000
             placeholder: BLURRED
             formats: [AUTO, WEBP]
+            quality: 90
           )
         }
       }

@@ -32,6 +32,7 @@ const Image = props => {
             width: 400
             placeholder: BLURRED
             formats: [AUTO, WEBP]
+            quality: 90
           )
         }
       }
