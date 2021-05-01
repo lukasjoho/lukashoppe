@@ -222,6 +222,7 @@ const Gallery = props => {
 
             {props.data.contentfulGallery.images &&
               props.data.contentfulGallery.images.map((image, index) => {
+                console.log(index)
                 return (
                   <SwiperSlide>
                     <motion.div
