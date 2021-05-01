@@ -33,6 +33,7 @@ const ProductPage = () => {
             width: 1000
             placeholder: BLURRED
             formats: [AUTO, WEBP]
+            quality: 90
           )
         }
       }
@@ -44,6 +45,7 @@ const ProductPage = () => {
             width: 1000
             placeholder: BLURRED
             formats: [AUTO, WEBP]
+            quality: 90
           )
         }
       }
@@ -53,6 +55,7 @@ const ProductPage = () => {
             width: 1000
             placeholder: BLURRED
             formats: [AUTO, WEBP]
+            quality: 90
           )
         }
       }
@@ -62,6 +65,7 @@ const ProductPage = () => {
             width: 1000
             placeholder: BLURRED
             formats: [AUTO, WEBP]
+            quality: 90
           )
         }
       }
@@ -71,6 +75,7 @@ const ProductPage = () => {
             width: 1000
             placeholder: BLURRED
             formats: [AUTO, WEBP]
+            quality: 90
           )
         }
       }
@@ -80,6 +85,7 @@ const ProductPage = () => {
             width: 1000
             placeholder: BLURRED
             formats: [AUTO, WEBP]
+            quality: 90
           )
         }
       }
@@ -89,6 +95,7 @@ const ProductPage = () => {
             width: 1000
             placeholder: BLURRED
             formats: [AUTO, WEBP]
+            quality: 90
           )
         }
       }
@@ -98,6 +105,7 @@ const ProductPage = () => {
             width: 1000
             placeholder: BLURRED
             formats: [AUTO, WEBP]
+            quality: 90
           )
         }
       }
