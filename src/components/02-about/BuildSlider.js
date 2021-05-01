@@ -195,7 +195,7 @@ const BuildSlider = () => {
                   layoutId="1"
                   width="100%"
                   height="100%"
-                  src="https://www.youtube.com/embed/DC_EtJI--3M?autoplay=1"
+                  src="https://www.youtube.com/embed/DC_EtJI--3M"
                   title="YouTube video player"
                   frameborder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
