@@ -167,14 +167,14 @@ const BuildSlider = () => {
             <StyledItem
               onClick={() =>
                 handleShow(
-                  "https://www.youtube.com/embed/qvc0QrFRVNo?autoplay=1"
+                  "https://www.youtube.com/embed/lmsnaBz8kP4?autoplay=1"
                 )
               }
             >
               <iframe
                 width="100%"
                 height="100%"
-                src="https://www.youtube.com/embed/qvc0QrFRVNo"
+                src="https://www.youtube.com/embed/lmsnaBz8kP4"
                 title="YouTube video player"
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -247,7 +247,7 @@ const BuildSlider = () => {
                     src={url}
                     title="YouTube video player"
                     frameborder="0"
-                    allow="fullscreen; accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allow="fullscreen; accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
                   ></iframe>
                 </div>
               </StyledModalContent>

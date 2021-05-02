@@ -83,7 +83,7 @@ const PrototypingPage = () => {
         </BlogRow>
         <BlogRow>
           <Col full>
-            <BlogVideo url="https://www.youtube.com/embed/qvc0QrFRVNo" />
+            <BlogVideo url="https://www.youtube.com/embed/lmsnaBz8kP4" />
           </Col>
         </BlogRow>
         <BlogRow>

@@ -39,7 +39,7 @@ export const BlogVideo = ({ url, inline }) => {
         src={url}
         title="YouTube video player"
         frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
         allowfullscreen
       ></iframe>
     </StyledVideo>
