@@ -52,7 +52,7 @@ const IndexPage = ({ handleToggle }) => {
     <>
       <SEO
         title="I like to build"
-        description="Hey. It's me, Lukas. Welcome to my site. Explore my work."
+        description="Hey, it's me Lukas. Welcome to my site. Explore my work."
         image={imageSeo.childImageSharp.fixed.src}
         url="https://lukashoppe.com"
       />
