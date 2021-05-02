@@ -114,9 +114,8 @@ const ProductPage = () => {
   return (
     <>
       <SEO
-        title="product"
-        description="passionate about developing digital products.
-i believe that the art of building is the art of listening to your customer."
+        title="Product"
+        description="See what I develop and design."
         url="https://lukashoppe.com/product"
       />
       <Container>

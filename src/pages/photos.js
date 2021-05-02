@@ -124,9 +124,8 @@ const PhotosPage = () => {
   return (
     <>
       <SEO
-        title="photos"
-        description="when I make pictures 
-I connect to the people I shoot."
+        title="Photos"
+        description="An overview of my photos I made around the years."
         url="https://lukashoppe.com/photos"
       />
       <Container>

@@ -108,9 +108,8 @@ const FilmsPage = () => {
   return (
     <>
       <SEO
-        title="films"
-        description="when making films I go with the flow. I seek to create
-              atmospheres."
+        title="Films"
+        description="These are the films I directed and produced."
         url="https://lukashoppe.com/films"
       />
       <Container>

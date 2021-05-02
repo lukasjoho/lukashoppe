@@ -56,8 +56,8 @@ const AboutPage = () => {
   return (
     <>
       <SEO
-        title="about"
-        description="while I like the process of perfecting the work I am more excited about the environment I am working in and the people and ideas I meet along the way."
+        title="About"
+        description="About me."
         url="https://lukashoppe.com/about"
       />
       <Container>

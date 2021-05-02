@@ -51,10 +51,8 @@ const IndexPage = ({ handleToggle }) => {
   return (
     <>
       <SEO
-        title="i like to build"
-        description="Currently, I am exploring the world of product management.
-Before that, I worked as a web developer and designer.
-I like to capture moments through photography."
+        title="I like to build"
+        description="Welcome to my personal website."
         image={imageSeo.childImageSharp.fixed.src}
         url="https://lukashoppe.com"
       />
@@ -63,8 +61,8 @@ I like to capture moments through photography."
           <Image />
           <StyledTextblock>
             <h1>
-              hey, I am Lukas
-              <br />i like to build.
+              hey, I am lukas.
+              <br />I like to build.
             </h1>
             <p>
               Currently, I am exploring the world of product management. <br />

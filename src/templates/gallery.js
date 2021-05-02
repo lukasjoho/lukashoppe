@@ -152,7 +152,7 @@ const Gallery = props => {
     <>
       <SEO
         title={props.data.contentfulGallery.title}
-        description="A photo gallery of Lukas Hoppe."
+        description="A photo gallery by Lukas Hoppe."
         url={`https://lukashoppe.com/photos/${props.data.contentfulGallery.slug}`}
       />
       <FullPage>
