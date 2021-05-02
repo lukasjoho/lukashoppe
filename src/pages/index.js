@@ -56,7 +56,7 @@ const IndexPage = ({ handleToggle }) => {
 Before that, I worked as a web developer and designer.
 I like to capture moments through photography."
         image={imageSeo.childImageSharp.fixed.src}
-        url="lukashoppe.netlify.app"
+        url="https://lukashoppe.com"
       />
       <FullPage auto>
         <Container auto>

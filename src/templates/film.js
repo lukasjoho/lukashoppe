@@ -7,6 +7,7 @@ import Container from "../components/00-shared/Container"
 import IconArrow from "src/images/icons/icon-arrow.svg"
 import IconArrowDark from "src/images/icons/icon-arrow-dark.svg"
 import InstagramEmbed from "react-instagram-embed"
+import SEO from "src/components/00-shared/Seo.js"
 export const query = graphql`
   query($slug: String!) {
     contentfulFilm(slug: { eq: $slug }) {
@@ -21,6 +22,7 @@ export const query = graphql`
         }
       }
       vertical
+      slug
     }
   }
 `
@@ -144,65 +146,85 @@ const Vimeo = ({ link }) => {
     </StyledYoutube>
   )
 }
+const capitalize = input => {
+  const words = input.split(" ")
+  for (let i = 0; i < words.length; i++) {
+    words[i] = words[i][0].toUpperCase() + words[i].substr(1)
+  }
+  const output = words.join(" ")
+  return output
+}
 const Film = props => {
   return (
-    <FullPage autoall>
-      {/* <FullPage autoall={props.data.contentfulFilm.instagram && true}> */}
-      <Container small>
-        <StyledFilm>
-          <StyledHeader>
-            <p>{props.data.contentfulFilm.category}</p>
-            <h1>{props.data.contentfulFilm.title}</h1>
-          </StyledHeader>
-          {props.data.contentfulFilm.youtube && (
-            <Youtube link={props.data.contentfulFilm.youtube} />
-          )}
-          {/* {props.data.contentfulFilm.vimeo && (
+    <>
+      <SEO
+        title={capitalize(props.data.contentfulFilm.title)}
+        description="A film by Lukas Hoppe."
+        url={`https://lukashoppe.com/films/${props.data.contentfulFilm.slug}`}
+      />
+      <FullPage autoall>
+        {/* <FullPage autoall={props.data.contentfulFilm.instagram && true}> */}
+        <Container small>
+          <StyledFilm>
+            <StyledHeader>
+              <p>{props.data.contentfulFilm.category}</p>
+              <h1>{props.data.contentfulFilm.title}</h1>
+            </StyledHeader>
+            {props.data.contentfulFilm.youtube && (
+              <Youtube link={props.data.contentfulFilm.youtube} />
+            )}
+            {/* {props.data.contentfulFilm.vimeo && (
             <Vimeo link={props.data.contentfulFilm.vimeo} />
           )} */}
-          {props.data.contentfulFilm.instagram && (
-            <>
-              <StyledInstagram>
-                <InstagramEmbed
-                  url={props.data.contentfulFilm.instagram}
-                  clientAccessToken="307951190929031|a0e4ae1229fe77901ee400e732645034"
-                  maxWidth={375}
-                  hideCaption={true}
-                  containerTagName="div"
-                  protocol=""
-                  injectScript
-                  onLoading={() => console.log("loading ...")}
-                  onSuccess={() => console.log("succeeded")}
-                  onAfterRender={() => console.log("rendered")}
-                  onFailure={() => console.log("failed")}
-                />
-              </StyledInstagram>
-            </>
-          )}
-          {props.data.contentfulFilm.video && (
-            <>
-              <StyledVideo
-                className={props.data.contentfulFilm.vertical && "vertical"}
-              >
-                <video
-                  autoplay
-                  src={props.data.contentfulFilm.video.file.url}
-                  controls
-                />
-              </StyledVideo>
-            </>
-          )}
+            {props.data.contentfulFilm.instagram && (
+              <>
+                <StyledInstagram>
+                  <InstagramEmbed
+                    url={props.data.contentfulFilm.instagram}
+                    clientAccessToken="307951190929031|a0e4ae1229fe77901ee400e732645034"
+                    maxWidth={375}
+                    hideCaption={true}
+                    containerTagName="div"
+                    protocol=""
+                    injectScript
+                    onLoading={() => console.log("loading ...")}
+                    onSuccess={() => console.log("succeeded")}
+                    onAfterRender={() => console.log("rendered")}
+                    onFailure={() => console.log("failed")}
+                  />
+                </StyledInstagram>
+              </>
+            )}
+            {props.data.contentfulFilm.video && (
+              <>
+                <StyledVideo
+                  className={props.data.contentfulFilm.vertical && "vertical"}
+                >
+                  <video
+                    autoplay
+                    src={props.data.contentfulFilm.video.file.url}
+                    controls
+                  />
+                </StyledVideo>
+              </>
+            )}
 
-          <Link to="/films">
-            <StyledBack>
-              <img className="default" src={IconArrow} alt="" height="16px" />
-              <img className="dark" src={IconArrowDark} alt="" height="16px" />
-              <p>Back To All</p>
-            </StyledBack>
-          </Link>
-        </StyledFilm>
-      </Container>
-    </FullPage>
+            {/* <Link to="/films">
+              <StyledBack>
+                <img className="default" src={IconArrow} alt="" height="16px" />
+                <img
+                  className="dark"
+                  src={IconArrowDark}
+                  alt=""
+                  height="16px"
+                />
+                <p>Back To All</p>
+              </StyledBack>
+            </Link> */}
+          </StyledFilm>
+        </Container>
+      </FullPage>
+    </>
   )
 }
 

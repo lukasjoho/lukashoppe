@@ -10,7 +10,7 @@ import Row from "../components/00-shared/Row"
 import Textblock from "../components/00-shared/Textblock"
 import Tagline from "../components/00-shared/Tagline"
 import Col from "../components/00-shared/Col"
-
+import SEO from "src/components/00-shared/Seo.js"
 import ContentRow from "../components/00-shared/ContentRow"
 import BuildSlider from "../components/02-about/BuildSlider"
 import TestimonialSlider from "../components/02-about/TestimonialSlider"
@@ -55,8 +55,13 @@ const AboutPage = () => {
   `)
   return (
     <>
+      <SEO
+        title="about"
+        description="while I like the process of perfecting the work I am more excited about the environment I am working in and the people and ideas I meet along the way."
+        url="https://lukashoppe.com/about"
+      />
       <Container>
-        <Tagline text="while I like the process of perfecting the work I am more excited about the environment I am working in and the people and ideas I meet along the way. " />
+        <Tagline text="while I like the process of perfecting the work I am more excited about the environment I am working in and the people and ideas I meet along the way." />
         <ContentRow
           text={
             <>

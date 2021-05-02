@@ -25,6 +25,7 @@ import IconKeys from "src/images/icons/icon-keys.svg"
 import IconScroll from "src/images/icons/icon-scroll.svg"
 import { Context } from "src/utils/Context.js"
 import GetWindowDimensions from "src/components/00-shared/_getWindowDimensions.js"
+import SEO from "src/components/00-shared/Seo.js"
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Mousewheel, Keyboard])
 
 const Container = styled.div`
@@ -115,6 +116,7 @@ export const query = graphql`
           formats: [AUTO, WEBP]
         )
       }
+      slug
     }
   }
 `
@@ -134,7 +136,7 @@ const Gallery = props => {
           ...context,
           timed: true,
         }),
-      1500
+      1000
     )
   }, [])
   console.log("context inital", context)
@@ -147,100 +149,112 @@ const Gallery = props => {
   }
 
   return (
-    <FullPage>
-      <AnimatePresence>
-        {isDesktop && context.timed && context.initial && (
-          <StyledOverlay
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ delay: 0, duration: 0.8 }}
+    <>
+      <SEO
+        title={props.data.contentfulGallery.title}
+        description="A photo gallery of Lukas Hoppe."
+        url={`https://lukashoppe.com/photos/${props.data.contentfulGallery.slug}`}
+      />
+      <FullPage>
+        <AnimatePresence>
+          {isDesktop && context.timed && context.initial && (
+            <StyledOverlay
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ delay: 0, duration: 0.8 }}
+            >
+              <div className="content">
+                <h2>
+                  slide through photos <span>your way</span>
+                </h2>
+                <ul>
+                  <li>
+                    <img src={IconKeys}></img>
+                    <p>use arrow keys</p>
+                  </li>
+                  <li>
+                    <img src={IconScroll}></img>
+                    <p>scroll vertically</p>
+                  </li>
+                  <li>
+                    <img className="rotate" src={IconScroll}></img>
+                    <p>scroll horizontally</p>
+                  </li>
+                </ul>
+                <Button
+                  overlay
+                  text="Got it. Let's go."
+                  event={handleOverlay}
+                />
+              </div>
+            </StyledOverlay>
+          )}
+        </AnimatePresence>
+
+        <Container>
+          <Swiper
+            spaceBetween={20}
+            direction="horizontal"
+            slidesPerView="auto"
+            observer={true}
+            observeParents={true}
+            loop={false}
+            centeredSlides={false}
+            pagination={{ clickable: true }}
+            mousewheelControl={true}
+            // onSlideChange={swiper => swiper.slideTo(0)}
+            onSwiper={swiper => swiper.setProgress(-0)}
+            mousewheel={true}
+            grabCursor={true}
+            keyboard={{
+              enabled: true,
+            }}
+            preloadImages={true}
+            preloadImages={true}
+            updateOnImagesReady={true}
           >
-            <div className="content">
-              <h2>
-                slide through photos <span>your way</span>
-              </h2>
-              <ul>
-                <li>
-                  <img src={IconKeys}></img>
-                  <p>use arrow keys</p>
-                </li>
-                <li>
-                  <img src={IconScroll}></img>
-                  <p>scroll vertically</p>
-                </li>
-                <li>
-                  <img className="rotate" src={IconScroll}></img>
-                  <p>scroll horizontally</p>
-                </li>
-              </ul>
-              <Button overlay text="Got it. Let's go." event={handleOverlay} />
-            </div>
-          </StyledOverlay>
-        )}
-      </AnimatePresence>
+            <AnimatePresence>
+              <SwiperSlide>
+                <motion.div
+                  initial="hidden"
+                  animate="visible"
+                  variants={variants}
+                  transition={{ duration: 1 }}
+                >
+                  <StyledImage>
+                    <GatsbyImage
+                      image={getImage(
+                        props.data.contentfulGallery.cover.gatsbyImageData
+                      )}
+                    />
+                  </StyledImage>
+                </motion.div>
+              </SwiperSlide>
 
-      <Container>
-        <Swiper
-          spaceBetween={20}
-          direction="horizontal"
-          slidesPerView="auto"
-          observer={true}
-          observeParents={true}
-          loop={false}
-          centeredSlides={false}
-          pagination={{ clickable: true }}
-          mousewheelControl={true}
-          // onSlideChange={swiper => swiper.slideTo(0)}
-          onSwiper={swiper => swiper.setProgress(-0)}
-          mousewheel={true}
-          grabCursor={true}
-          keyboard={{
-            enabled: true,
-          }}
-          preloadImages={true}
-          preloadImages={true}
-          updateOnImagesReady={true}
-        >
-          <AnimatePresence>
-            <SwiperSlide>
-              <motion.div
-                initial="hidden"
-                animate="visible"
-                variants={variants}
-                transition={{ duration: 1 }}
-              >
-                <StyledImage>
-                  <GatsbyImage
-                    image={getImage(
-                      props.data.contentfulGallery.cover.gatsbyImageData
-                    )}
-                  />
-                </StyledImage>
-              </motion.div>
-            </SwiperSlide>
-
-            {props.data.contentfulGallery.images &&
-              props.data.contentfulGallery.images.map((image, index) => {
-                console.log(index)
-                return (
-                  <SwiperSlide>
-                    <motion.div
-                      initial="hidden"
-                      animate="visible"
-                      variants={variants}
-                      transition={{ duration: 1, delay: 0 }}
-                    >
-                      <StyledImage>
-                        <GatsbyImage image={getImage(image.gatsbyImageData)} />
-                      </StyledImage>
-                    </motion.div>
-                  </SwiperSlide>
-                )
-              })}
-          </AnimatePresence>
-        </Swiper>
-        {/* <div className="swiper-container">
+              {props.data.contentfulGallery.images &&
+                props.data.contentfulGallery.images.map((image, index) => {
+                  console.log(index)
+                  return (
+                    <SwiperSlide>
+                      <motion.div
+                        initial="hidden"
+                        animate="visible"
+                        variants={variants}
+                        transition={{ duration: 1, delay: 0 }}
+                      >
+                        <StyledImage>
+                          <GatsbyImage
+                            image={getImage(image.gatsbyImageData)}
+                          />
+                        </StyledImage>
+                      </motion.div>
+                    </SwiperSlide>
+                  )
+                })}
+            </AnimatePresence>
+          </Swiper>
+          {/* <div className="swiper-container">
           <div className="swiper-wrapper">
             {slides.map(slide => (
               <div
@@ -251,8 +265,9 @@ const Gallery = props => {
             ))}
           </div>
         </div> */}
-      </Container>
-    </FullPage>
+        </Container>
+      </FullPage>
+    </>
   )
 }
 

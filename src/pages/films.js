@@ -15,7 +15,7 @@ import styled from "styled-components"
 import Col from "../components/00-shared/Col"
 
 import IconPlay from "src/images/icons/icon-play.svg"
-
+import SEO from "src/components/00-shared/Seo.js"
 const StyledFilmContainer = styled.div`
   margin: 0 ${props => `calc(-1 * ${props.theme.spacing.padding.mobile}rem)`};
 
@@ -107,6 +107,12 @@ const FilmsPage = () => {
   )
   return (
     <>
+      <SEO
+        title="films"
+        description="when making films I go with the flow. I seek to create
+              atmospheres."
+        url="https://lukashoppe.com/films"
+      />
       <Container>
         <Tagline
           text={

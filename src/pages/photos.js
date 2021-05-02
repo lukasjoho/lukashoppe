@@ -14,6 +14,7 @@ import Breakpoint from "src/components/00-shared/_breakpoints.js"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import styled from "styled-components"
+import SEO from "src/components/00-shared/Seo.js"
 const MasonryItem = styled.div`
   position: relative;
   background: grey;
@@ -122,6 +123,12 @@ const PhotosPage = () => {
   )
   return (
     <>
+      <SEO
+        title="photos"
+        description="when I make pictures 
+I connect to the people I shoot."
+        url="https://lukashoppe.com/photos"
+      />
       <Container>
         <Tagline
           text="when I make pictures 

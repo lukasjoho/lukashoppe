@@ -14,7 +14,7 @@ import Image1 from "../images/product/image-biersafe.jpg"
 import Image2 from "../images/product/image-nikolas.jpg"
 import { graphql, useStaticQuery } from "gatsby"
 import { getImage } from "gatsby-plugin-image"
-
+import SEO from "src/components/00-shared/Seo.js"
 const ProductPage = () => {
   const {
     imageBonvelo,
@@ -113,10 +113,16 @@ const ProductPage = () => {
   `)
   return (
     <>
+      <SEO
+        title="product"
+        description="passionate about developing digital products.
+i believe that the art of building is the art of listening to your customer."
+        url="https://lukashoppe.com/product"
+      />
       <Container>
         <Tagline
           text="passionate about developing digital products.
-i believe that the art of building is the art of listening to your customer"
+i believe that the art of building is the art of listening to your customer."
         />
         <ContentRow
           subtitle="e-commerce"
