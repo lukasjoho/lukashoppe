@@ -24,9 +24,9 @@ const StyledMenu = styled(motion.div)`
   font-weight: 700;
   letter-spacing: 0.05rem;
   min-height: 600px;
-  @media ${Breakpoint.lg} {
+  /* @media ${Breakpoint.lg} {
     min-height: 800px;
-  }
+  } */
   Footer {
     position: absolute;
     bottom: 0;
