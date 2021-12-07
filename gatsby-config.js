@@ -23,6 +23,7 @@ Before that, I worked as a web developer and ux designer. I like to capture mome
       resolve: `gatsby-source-contentful`,
       options: {
         spaceId: process.env.CONTENTFUL_SPACE_ID,
+        environment: "master",
         accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
       },
     },
