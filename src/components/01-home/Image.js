@@ -11,15 +11,32 @@ const StyledImage = styled.div`
   font-size: 0;
   margin-bottom: 3rem;
   margin-top: 0.5rem;
+  position: relative;
+  .gatsby-image-wrapper-constrained {
+    width: 100%;
+    > div {
+      max-width: 100% !important;
+    }
+  }
+
+  /* &:after {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+  }
+  > {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+  } */
   @media ${Breakpoint.lg} {
     margin-top: 0rem;
     height: 33rem;
     width: 33rem;
     margin-right: 6rem;
     margin-bottom: 0rem;
-  }
-  img {
-    width: 100%;
   }
 `
 
