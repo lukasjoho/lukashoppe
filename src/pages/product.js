@@ -25,6 +25,10 @@ const ProductPage = () => {
     imageNewschool,
     imageLh,
     imageBorrow,
+    imageTerraviz,
+    imageSiemens,
+    imageScenariomodelling,
+    imageJobfinder,
   } = useStaticQuery(graphql`
     query {
       imageBonvelo: file(relativePath: { eq: "product/image-bonvelo.jpg" }) {
@@ -109,6 +113,50 @@ const ProductPage = () => {
           )
         }
       }
+      imageTerraviz: file(relativePath: { eq: "product/image-terraviz.jpg" }) {
+        childImageSharp {
+          gatsbyImageData(
+            width: 1000
+            placeholder: BLURRED
+            formats: [AUTO, WEBP]
+            quality: 90
+          )
+        }
+      }
+      imageSiemens: file(relativePath: { eq: "product/image-siemens.jpg" }) {
+        childImageSharp {
+          gatsbyImageData(
+            width: 1000
+            placeholder: BLURRED
+            formats: [AUTO, WEBP]
+            quality: 90
+          )
+        }
+      }
+      imageScenariomodelling: file(
+        relativePath: { eq: "product/image-scenariomodelling.jpg" }
+      ) {
+        childImageSharp {
+          gatsbyImageData(
+            width: 1000
+            placeholder: BLURRED
+            formats: [AUTO, WEBP]
+            quality: 90
+          )
+        }
+      }
+      imageJobfinder: file(
+        relativePath: { eq: "product/image-jobfinder.jpg" }
+      ) {
+        childImageSharp {
+          gatsbyImageData(
+            width: 1000
+            placeholder: BLURRED
+            formats: [AUTO, WEBP]
+            quality: 90
+          )
+        }
+      }
     }
   `)
   return (
@@ -122,6 +170,48 @@ const ProductPage = () => {
         <Tagline
           text="passionate about developing digital products.
 i believe that the art of building is the art of listening to your customer."
+        />
+        <ContentRow
+          subtitle="data science project"
+          title="TerraViz"
+          text="Together with my data science and web development team from the TechLabs data science track, we developed a web application that makes climate change tangible. An interactive map visualizes the change of temprature of the last century across the globe."
+          link="https://github.com/TechLabs-Berlin/st21-terraViz"
+          button="See Github Project"
+          image={getImage(imageTerraviz.childImageSharp.gatsbyImageData)}
+          reverseMobile
+          inside
+        />
+        <ContentRow
+          subtitle="case study"
+          title="Siemens"
+          text="A case study about our work at excyted for Siemens building an internal AI website. It explains how we refactored outdated web architecture into lightning fast loading times, more consistend design and a tailor-made content management system with markdown."
+          link="https://excyted.io/en/case-studies/siemens-ai"
+          button="See case study"
+          image={getImage(imageSiemens.childImageSharp.gatsbyImageData)}
+          reverseMobile
+          inside
+        />
+        <ContentRow
+          subtitle="chartjs and react"
+          title="Scenario Modelling"
+          text="In this little project I built a dynamic MVP of a financial modelling feature. Based on user input, financial scenarios are displayed to the user in a visual chart."
+          link="https://scenariofeature.netlify.app/scenarios/model-1"
+          button="See feature"
+          image={getImage(
+            imageScenariomodelling.childImageSharp.gatsbyImageData
+          )}
+          reverseMobile
+          inside
+        />
+        <ContentRow
+          subtitle="web application design & development"
+          title="Jobfinder"
+          text="This case study explains how we at excyted designed and built a web application which offers high school students insights into various jobs in the form of videos. From challenge across discovery and ui design to development and deployment we give a brief explanation for our decisions."
+          link="https://excyted.io/en/case-studies/job-finder"
+          button="See feature"
+          image={getImage(imageJobfinder.childImageSharp.gatsbyImageData)}
+          reverseMobile
+          inside
         />
         <ContentRow
           subtitle="e-commerce"
