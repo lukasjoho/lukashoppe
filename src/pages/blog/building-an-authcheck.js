@@ -76,14 +76,14 @@ const BorrowPage = () => {
   return (
     <>
       <SEO
-        title="Fancy an authCheck?"
-        description="In this post, I show how I manage user authenticated actions on the clientside."
-        url="https://lukashoppe.com/blog/fancy-an-authcheck"
+        title="Building an authchecker"
+        description="In this post, I show how I manage user authenticated actions on the clientside with an authcheck component."
+        url="https://lukashoppe.com/blog/building-an-authcheck"
       />
       <Container small>
         {/* change bloghead  */}
         <BlogHead
-          title="fancy an authCheck?"
+          title="building an authchecker"
           tags={["frontend development", "user authentication", "wrappers"]}
         />
         {/* change row inside */}
@@ -111,6 +111,14 @@ const BorrowPage = () => {
               However, the frontend should render UI that guides the user
               towards their action in case they are not logged in. In this case
               this is the triggering of a login modal.
+            </p>
+            <p>
+              In summary: The user attempts to make an auth protected action,
+              e.g. sending a message. <br />
+              IF the user <strong>is not</strong> signed in, the application
+              should show a <strong>login modal</strong>. <br />
+              If the user <strong>is</strong> signed in, the application should
+              show a <strong>message modal</strong>.
             </p>
           </Col>
         </BlogRow>
@@ -142,8 +150,8 @@ const BorrowPage = () => {
             </p>
             <p>
               <strong>Global Login Modal:</strong> My login modal should be
-              controlled on a global app level instead of managing itself on
-              component-based state.
+              controlled on a global app-level instead of managing itself on
+              component-level state.
             </p>
             <p>
               <strong>AuthChecker:</strong> I need a component that wraps any
@@ -215,8 +223,8 @@ export const useGlobalModalContext = () => {
 
             <Highlight language="javascript">
               {`const LoginModal = ({ onClose }) => { return (
-                <form>...</form>
-              )}
+  <form>...</form>
+)}
 `}
             </Highlight>
             <p>
@@ -248,11 +256,11 @@ export const useGlobalModalContext = () => {
   return (
     ...
     <GlobalModal>
+      ...
+      <Component {...pageProps} />
+      ...
+    </GlobalModal>
     ...
-   <Component {...pageProps} />
-   ...
-   </GlobalModal>
-   ...
   );
 };
 

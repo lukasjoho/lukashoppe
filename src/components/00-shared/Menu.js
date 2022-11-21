@@ -255,7 +255,7 @@ const Menu = ({ isOpen, handleToggle }) => {
             handleExpanded={handleExpanded}
             expanded={expanded}
             dropdown={[
-              ["fancy an authCheck?", "/blog/fancy-an-authcheck"],
+              ["building an authchecker", "/blog/building-an-authchecker"],
               ["react 101", "/blog/react-101"],
               ["borrow", "/blog/borrow"],
               ["prototyping", "/blog/prototyping"],
