@@ -11,7 +11,7 @@ const StyledCol = styled.div`
   width: 100%;
 
   @media ${Breakpoint.lg} {
-    padding: 0 ${props => `${props.theme.spacing.padding.desktop / 2}rem`};
+    padding: 0 ${props => `${props.theme.spacing.padding.desktop}rem`};
     width: 50%;
     &.small {
       width: 40%;
