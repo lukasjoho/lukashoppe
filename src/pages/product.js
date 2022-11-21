@@ -206,7 +206,7 @@ i believe that the art of building is the art of listening to your customer."
         <ContentRow
           subtitle="personal website"
           title="a 3h project"
-          text="While in Portugal, I was invited to a friends birthday party in the evening. On a rainy morning of the very same day I challenged myself to create a website for him. All I had was 3 hours. Designing, developing, deploying, buying and connecting a domain: I made it on the second. Build with NextJS, Google Map React and TailwindCSS."
+          text="While in Portugal, I was invited to a friends birthday party in the evening. On a rainy morning of the very same day I thought of a fun little challenge. Creating a little website for him as a present. I had 3 hours to design, develop, deploy and to buy and connect a domain. Build with NextJS, Google Map React and TailwindCSS."
           href="https://freddybock.com"
           button="visit freddy's website"
           image={getImage(imageFreddy.childImageSharp.gatsbyImageData)}
