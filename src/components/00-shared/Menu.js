@@ -42,9 +42,9 @@ const Nav = styled.nav`
     li {
       text-align: center;
       color: ${props => props.theme.colors.middlegrey};
-      font-size: 3.2rem;
+      font-size: 2.5rem;
       font-weight: 700;
-      line-height: 6.4rem;
+      line-height: 5rem;
       span {
         transition: 0.3s ease;
         pointer-events: none;
@@ -60,30 +60,30 @@ const Nav = styled.nav`
       }
 
       @media ${Breakpoint.lg} {
-        font-size: 4rem;
+        font-size: 3rem;
         font-weight: 700;
-        line-height: 8rem;
+        line-height: 6rem;
       }
       @media ${Breakpoint.xl} {
-        font-size: 4.5rem;
+        font-size: 3.5rem;
         font-weight: 700;
-        line-height: 9rem;
+        line-height: 7rem;
       }
       cursor: pointer;
       .sublist {
         padding: 0;
         list-style-type: none;
         li {
-          font-size: 2rem;
-          line-height: 4.4rem;
+          font-size: 1.5rem;
+          line-height: 3rem;
           cursor: pointer;
           @media ${Breakpoint.lg} {
-            font-size: 2rem;
-            line-height: 4.5rem;
+            font-size: 1.5rem;
+            line-height: 3rem;
           }
           @media ${Breakpoint.xl} {
-            font-size: 2.2rem;
-            line-height: 5rem;
+            font-size: 2rem;
+            line-height: 4rem;
           }
         }
       }
@@ -255,6 +255,7 @@ const Menu = ({ isOpen, handleToggle }) => {
             handleExpanded={handleExpanded}
             expanded={expanded}
             dropdown={[
+              ["fancy an authCheck?", "/blog/fancy-an-authcheck"],
               ["react 101", "/blog/react-101"],
               ["borrow", "/blog/borrow"],
               ["prototyping", "/blog/prototyping"],

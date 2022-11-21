@@ -15,7 +15,8 @@ const StyledRow = styled.div`
     }
   }
   @media ${Breakpoint.lg} {
-    margin: 0 ${props => `calc(-1 * ${props.theme.spacing.padding.desktop}rem)`};
+    margin: 0
+      ${props => `calc(-1 * ${props.theme.spacing.padding.desktop / 2}rem)`};
     flex-direction: row;
     padding-bottom: 8rem;
   }

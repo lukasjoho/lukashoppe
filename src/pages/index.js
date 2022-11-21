@@ -65,7 +65,7 @@ const IndexPage = ({ handleToggle }) => {
               <br />I like to build.
             </h1>
             <p>
-              Currently, I am exploring the world of product management. <br />
+              Currently, I explore the world of product management. <br />
               Before that, I worked as a web developer and ux designer.
               <br />I like to capture moments through photography. <br />
               Say hello at{" "}

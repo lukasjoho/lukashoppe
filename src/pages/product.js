@@ -29,8 +29,30 @@ const ProductPage = () => {
     imageSiemens,
     imageScenariomodelling,
     imageJobfinder,
+    imageFreddy,
+    imageLancie,
   } = useStaticQuery(graphql`
     query {
+      imageFreddy: file(relativePath: { eq: "product/image-freddybock.jpg" }) {
+        childImageSharp {
+          gatsbyImageData(
+            width: 1000
+            placeholder: BLURRED
+            formats: [AUTO, WEBP]
+            quality: 90
+          )
+        }
+      }
+      imageLancie: file(relativePath: { eq: "product/image-lancie.jpg" }) {
+        childImageSharp {
+          gatsbyImageData(
+            width: 1000
+            placeholder: BLURRED
+            formats: [AUTO, WEBP]
+            quality: 90
+          )
+        }
+      }
       imageBonvelo: file(relativePath: { eq: "product/image-bonvelo.jpg" }) {
         childImageSharp {
           gatsbyImageData(
@@ -172,21 +194,41 @@ const ProductPage = () => {
 i believe that the art of building is the art of listening to your customer."
         />
         <ContentRow
+          subtitle="fullstack creator platform"
+          title="lancie"
+          text="On a mission to make creator-brand relationships more productive, Lancie brings together brands and video creators in one web platform where they can find each other, get in contact and benefit from the most efficient way to make their production happen. I started this side-project, to refine my understanding of web architecture by building a platform from scratch with state-of-the-art web technologies. I here use Next, NestJS, Typescript, PrismaDB, Supabase, Cloudinary, ChakraUI, Hygraph, Vercel and AWS S3. "
+          href="https://lancie.io"
+          button="visit lancie"
+          image={getImage(imageLancie.childImageSharp.gatsbyImageData)}
+          reverseMobile
+          inside
+        />
+        <ContentRow
+          subtitle="personal website"
+          title="a 3h project"
+          text="While in Portugal, I was invited to a friends birthday party in the evening. On a rainy morning of the very same day I challenged myself to create a website for him. All I had was 3 hours. Designing, developing, deploying, buying and connecting a domain: I made it on the second. Build with NextJS, Google Map React and TailwindCSS."
+          href="https://freddybock.com"
+          button="visit freddy's website"
+          image={getImage(imageFreddy.childImageSharp.gatsbyImageData)}
+          reverseMobile
+          inside
+        />
+        <ContentRow
           subtitle="data science project"
-          title="TerraViz"
+          title="terraViz"
           text="Together with my data science and web development team from the TechLabs data science track, we developed a web application that makes climate change tangible. An interactive map visualizes the change of temprature of the last century across the globe."
-          link="https://github.com/TechLabs-Berlin/st21-terraViz"
-          button="See Github Project"
+          href="https://github.com/TechLabs-Berlin/st21-terraViz"
+          button="see github project"
           image={getImage(imageTerraviz.childImageSharp.gatsbyImageData)}
           reverseMobile
           inside
         />
         <ContentRow
           subtitle="case study"
-          title="Siemens"
+          title="siemens"
           text="A case study about our work at excyted for Siemens building an internal AI website. It explains how we refactored outdated web architecture into lightning fast loading times, more consistend design and a tailor-made content management system with markdown."
-          link="https://excyted.io/en/case-studies/siemens-ai"
-          button="See case study"
+          href="https://excyted.io/en/case-studies/siemens-ai"
+          button="see case study"
           image={getImage(imageSiemens.childImageSharp.gatsbyImageData)}
           reverseMobile
           inside
@@ -195,8 +237,8 @@ i believe that the art of building is the art of listening to your customer."
           subtitle="chartjs and react"
           title="Scenario Modelling"
           text="In this little project I built a dynamic MVP of a financial modelling feature. Based on user input, financial scenarios are displayed to the user in a visual chart."
-          link="https://scenariofeature.netlify.app/scenarios/model-1"
-          button="See feature"
+          href="https://scenariofeature.netlify.app/scenarios/model-1"
+          button="see feature"
           image={getImage(
             imageScenariomodelling.childImageSharp.gatsbyImageData
           )}
@@ -205,10 +247,10 @@ i believe that the art of building is the art of listening to your customer."
         />
         <ContentRow
           subtitle="web application design & development"
-          title="Jobfinder"
+          title="jobfinder"
           text="This case study explains how we at excyted designed and built a web application which offers high school students insights into various jobs in the form of videos. From challenge across discovery and ui design to development and deployment we give a brief explanation for our decisions."
-          link="https://excyted.io/en/case-studies/job-finder"
-          button="See feature"
+          href="https://excyted.io/en/case-studies/job-finder"
+          button="see feature"
           image={getImage(imageJobfinder.childImageSharp.gatsbyImageData)}
           reverseMobile
           inside
@@ -279,7 +321,7 @@ I then also developed the site from scratch with GatsbyJS and Contentful."
         <ContentRow
           subtitle="my very own personal website"
           title="lukas hoppe"
-          text="My own website is a reminder to the legible and harmonious use of white-space to create an effective and easy-to-use website. I designed it with Figma and developed it with GatsbyJS. On top of that I used to Contentful to manage my content. I also used framer-motion to include smooth animations."
+          text="My own website is a reminder to myself and the legible and harmonious use of white-space to create an effective and easy-to-use website. I designed it with Figma and developed it with GatsbyJS. On top of that I used to Contentful to manage my content. I also used framer-motion to include smooth animations."
           image={getImage(imageLh.childImageSharp.gatsbyImageData)}
           reverseMobile
           inside
