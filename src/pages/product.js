@@ -31,6 +31,7 @@ const ProductPage = () => {
     imageJobfinder,
     imageFreddy,
     imageLancie,
+    imageUplift,
   } = useStaticQuery(graphql`
     query {
       imageFreddy: file(relativePath: { eq: "product/image-freddybock.jpg" }) {
@@ -209,7 +210,7 @@ i believe that the art of building is the art of listening to your customer."
           text="I am currently building an experimentation platform. Both from a user experience as well as from a technical side, this is a very exciting endeavour. I am using newest web technologies such as Vercel edge functions, as well as a websocket-mobx combination to provide real-time experiences to experimenteers."
           href="https://uplift-web.vercel.app"
           button="visit uplift"
-          image={getImage(imageLancie.childImageSharp.gatsbyImageData)}
+          image={getImage(imageUplift.childImageSharp.gatsbyImageData)}
           reverseMobile
           inside
         />
