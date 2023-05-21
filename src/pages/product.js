@@ -179,6 +179,16 @@ const ProductPage = () => {
           )
         }
       }
+      imageUplift: file(relativePath: { eq: "product/image-uplift.jpg" }) {
+        childImageSharp {
+          gatsbyImageData(
+            width: 1000
+            placeholder: BLURRED
+            formats: [AUTO, WEBP]
+            quality: 90
+          )
+        }
+      }
     }
   `)
   return (
@@ -192,6 +202,16 @@ const ProductPage = () => {
         <Tagline
           text="passionate about developing digital products.
 i believe that the art of building is the art of listening to your customer."
+        />
+        <ContentRow
+          subtitle="building an experimentation platform"
+          title="uplift"
+          text="I am currently building an experimentation platform. Both from a user experience as well as from a technical side, this is a very exciting endeavour. I am using newest web technologies such as Vercel edge functions, as well as a websocket-mobx combination to provide real-time experiences to experimenteers."
+          href="https://uplift-web.vercel.app"
+          button="visit uplift"
+          image={getImage(imageLancie.childImageSharp.gatsbyImageData)}
+          reverseMobile
+          inside
         />
         <ContentRow
           subtitle="fullstack creator platform"
